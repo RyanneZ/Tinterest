@@ -21,13 +21,20 @@
       <a href="#" class="sidenav-trigger" data-target="mobile-links">
         <i class="material-icons pink-text">menu</i>
       </a>
-      <ul class="right hide-on-med-and-down pink-text">      
-        
+      <ul class="right hide-on-med-and-down pink-text">     
+        {% if user.is_authenticated %} 
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="#">Edit Profile</a></li>
         <li><a href="#">Saved</a></li>
         <li><a href="#">Search</a></li>
         <li><a href="#">Log Out</a></li>
+        {% else %}
+
+        <li><a href="{% url 'login' %}">Log In</a></li>
+
+        {% endif %}
+
+        <!-- <li><a href="{% url 'login' %}">Log In</a></li> -->
         
       </ul>
     </div>
