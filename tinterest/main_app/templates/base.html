@@ -18,7 +18,7 @@
   <nav class="nav-wraper white">
     <div class="container">
       <a href="/" class="brand-logo">Tinterest</a>
-      <a href="#" class="sidenav-trigger" data-target="mobile-links">
+      <a href="#" class="sidenav-trigger right" data-target="mobile-links">
         <i class="material-icons pink-text">menu</i>
       </a>
       <ul class="right hide-on-med-and-down pink-text">      
@@ -34,13 +34,17 @@
   </nav>
   
   <ul class="sidenav pink" id="mobile-links">
+    {% if user.is_authenticated %} 
     
     <li ><a href="#" class="white-text"><i class="material-icons white-text">home</i>Home</a></li>
     <li><a href="#" class="white-text"><i class="material-icons white-text">account_circle</i>Edit Profile</a></li>
     <li><a href="#" class="white-text"><i class="material-icons white-text">favorite_border</i>Saved</a></li>
     <li><a href="#" class="white-text"><i class="material-icons white-text">search</i>Search</a></li>
-    <li><a href="#" class="white-text"><i class="material-icons white-text">logout</i>Log Out</a></li>
-    
+    <li><a href="{% url 'logout' %}" class="white-text"><i class="material-icons white-text">logout</i>Log Out</a></li>
+    {% else %}
+    <li><a href="{% url 'login' %}" class="white-text"><i class="material-icons white-text">login</i>Log In</a></li>
+    <li><a href="{% url 'signup' %}" class="white-text"><i class="material-icons white-text">signup</i>Sign Up</a></li>
+    {% endif %}
   </ul>
   
   
