@@ -1,8 +1,29 @@
+/* general */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ol, ul, menu {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
 body {
   font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: #212121;
 }
-h1,h2,h3,h4 {
+
+h1,h2,h3,h4, h5, h6 {
   font-family: 'Inter', sans-serif;
+  font-weight:700;
 }
 nav {
   -webkit-box-shadow: none; 
@@ -10,3 +31,5 @@ nav {
 .pink-text {
   color:  #FF4D67 !important;
 }
+
+
