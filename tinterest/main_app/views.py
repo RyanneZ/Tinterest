@@ -6,7 +6,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Postcreated, Photo
 import uuid
 import boto3
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Add the following import
 from django.http import HttpResponse
@@ -39,10 +40,11 @@ def signup(request):
   context = {'form':form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+@login_required
 def showProfile(request):
   return render(request, 'profile.html') 
 
-class PostcreatedCreate(CreateView):
+class PostcreatedCreate(LoginRequiredMixin, CreateView):
   model = Postcreated
   fields = '__all__'
   success_url = '/profile'
@@ -59,6 +61,7 @@ class PostcreatedCreate(CreateView):
 S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
 BUCKET = "catcollector-ryanne"
 
+@login_required
 def add_photo(request):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
@@ -76,21 +79,23 @@ def add_photo(request):
   else:
     return HttpResponse("no photos were received")
 
+@login_required
 def posts_index(request):
-  posts = Postcreated.objects.all()
+  posts = Postcreated.objects.filter(user=request.user)
   return render(request, 'posts/index.html', { 'posts': posts })
 
+@login_required
 def posts_detail(request, post_id):
   post = Postcreated.objects.get(id = post_id)
   return render(request, 'posts/detail.html', {'post': post})
 
 
 
-class PostcreatedUpdate(UpdateView):
+class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
   model = Postcreated
   # Let's disallow the renaming of a cat by excluding the name field!
   fields = '__all__'
   
-class PostcreatedDelete(DeleteView):
+class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
   success_url = '/posts/'
