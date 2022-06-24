@@ -40,7 +40,7 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 def showProfile(request):
-  return render(request, 'profile.html')
+  return render(request, 'profile.html') 
 
 class PostcreatedCreate(CreateView):
   model = Postcreated
