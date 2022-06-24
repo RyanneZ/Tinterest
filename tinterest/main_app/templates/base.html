@@ -17,18 +17,21 @@
 <body>
   <nav class="nav-wraper white">
     <div class="container">
-      <a href="/" class="brand-logo">Tinterest</a>
-      <a href="#" class="sidenav-trigger right" data-target="mobile-links">
-        <i class="material-icons pink-text">menu</i>
+      <a href="/" class="brand-logo pink-text">Tinterest</a>
+      <a href="#" class="sidenav-trigger right pink-text" data-target="mobile-links">
+        <i class="material-icons ">menu</i>
       </a>
-      <ul class="right hide-on-med-and-down pink-text">      
-        
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="#">Edit Profile</a></li>
-        <li><a href="#">Saved</a></li>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Log Out</a></li>
-        
+      <ul class="right hide-on-med-and-down">      
+        {% if user.is_authenticated %} 
+        <li><a href="{% url 'home' %} " class="pink-text">Home</a></li>
+        <li><a href="#" class="pink-text">Edit Profile</a></li>
+        <li><a href="#" class="pink-text">Saved</a></li>
+        <li><a href="#"class="pink-text">Search</a></li>
+        <li><a href="{% url 'logout' %}"class="pink-text">Log Out</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" class="pink-text">Log In</a></li>
+        <li><a href="{% url 'signup' %}" class="pink-text">Sign Up</a></li>
+        {% endif %}
       </ul>
     </div>
   </nav>

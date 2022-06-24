@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+  <div class="card-content">
+    <img class='cover'src="{{ post.image }}">
+    <h5>{{ post.title }}</h5>
+    <br>
+    <p>{{ post.description }}</p>
+    <p class="blue-text">{{ post.tags }}</p>
+   
+  </div>
+</div>
+
+<button class="btn pink ">
+  <a href="{% url 'posts_update' post.id %}" class="white-text ">Edit</a>
+</button>
+
+<button class="btn pink ">
+  <a href="{% url 'posts_delete' post.id %}" class="white-text" >Delete</a>
+</button>
+
+
+
+<!-- <button>Delete</button>
+<button>Edit</button> -->
+{% endblock %}
