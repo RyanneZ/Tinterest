@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
   path('', views.home, name='home'),
   path('welcome', views.welcome, name='welcome'),
@@ -16,3 +19,6 @@ urlpatterns = [
   path('posts/<int:pk>/delete/', views.PostcreatedDelete.as_view(), name='posts_delete'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

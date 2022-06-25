@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+
 # Create your models here.
 class Postcreated(models.Model):
   image = models.CharField(max_length=200)
@@ -19,3 +20,15 @@ class Photo(models.Model):
 
   def __str__(self):
       return f"Photo for post_id: {self.post_id} @{self.url}"
+
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
+ 
+    description = models.CharField(max_length=200)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.username} Profile' #show how we want it to be displayed
+    
