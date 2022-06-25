@@ -16,8 +16,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
-# Add the following import
-from django.http import HttpResponse
+from django.contrib import messages
+
+
+
+
 
 # Define the welcome view (signup/login)
 def welcome(request):
@@ -50,7 +53,7 @@ def signup(request):
 @login_required
 def showProfile(request):
   
-  return render(request, 'profile.html') 
+    return render(request, 'profile.html') 
 
 class PostcreatedCreate(LoginRequiredMixin, CreateView):
   model = Postcreated
@@ -107,6 +110,8 @@ class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
 class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
   success_url = '/posts/'
+
+
 
 
 

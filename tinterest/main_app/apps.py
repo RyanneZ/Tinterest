@@ -6,9 +6,3 @@ class MainAppConfig(AppConfig):
     name = 'main_app'
 
 
-#Profile
-class UsersConfig(AppConfig):
-    name = 'users'
-
-    def ready(self):
-        import users.signals

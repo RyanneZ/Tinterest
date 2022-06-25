@@ -134,3 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #allows crappy passwords 
 AUTH_PASSWORD_VALIDATORS = []
+
