@@ -3,14 +3,24 @@ from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Postcreated, Photo
+from .models import Postcreated, Photo 
 import uuid
 import boto3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-# Add the following import
-from django.http import HttpResponse
+#Profile
+
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from .models import Profile
+
+from django.contrib import messages
+
+
+
+
 
 # Define the welcome view (signup/login)
 def welcome(request):
@@ -42,7 +52,8 @@ def signup(request):
 
 @login_required
 def showProfile(request):
-  return render(request, 'profile.html') 
+  
+    return render(request, 'profile.html') 
 
 S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
 BUCKET = "catcollector-ryanne"
@@ -102,3 +113,10 @@ class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
 class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
   success_url = '/posts/'
+
+
+
+
+
+
+
