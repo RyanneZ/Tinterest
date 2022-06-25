@@ -44,6 +44,9 @@ def signup(request):
 def showProfile(request):
   return render(request, 'profile.html') 
 
+S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
+BUCKET = "catcollector-ryanne"
+
 class PostcreatedCreate(LoginRequiredMixin, CreateView):
   model = Postcreated
   fields = '__all__'
