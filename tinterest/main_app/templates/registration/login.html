@@ -15,11 +15,13 @@
   <body>
     <h3>Log In</h3>
 
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="btn pink" value="login">
-        <input type="hidden" name="next" value="{{ next }}">
-    </form>
+    <div class="wrapper wrap-signup">
+      <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" class="btn btn-signup" value="login">
+          <input type="hidden" name="next" value="{{ next }}">
+      </form>
+    </div>
   </body>
 </html>
