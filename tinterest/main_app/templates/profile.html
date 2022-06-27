@@ -10,9 +10,12 @@
 <h5 class="center-align">{{ user.username }}</h5>
 <p class="text-secondary center-align">{{ user.profile.description }}</p>
 <div style="display: flex; justify-content: center;" >
-  <a class="waves-effect waves-light btn-small pink">Edit Profile</a>
+  <a href="{% url 'edit_profile' %}" class="waves-effect waves-light btn-small pink">Edit Profile</a>
 </div>
 
 <a href="{% url 'posts_create' %}" class="right"><i class="material-icons pink-text">add</i></a>
 
 {% endblock %}
+
+<!-- href="{% url 'update_profile' %}" -->
+

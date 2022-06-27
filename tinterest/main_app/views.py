@@ -50,10 +50,18 @@ def signup(request):
   context = {'form':form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+#show profile page
 @login_required
 def showProfile(request):
   
     return render(request, 'profile.html') 
+
+#renders update profile page 
+@login_required
+def profile_edit(request):
+    print(request.user.id)
+    return render(request, 'registration/editprofile.html') 
+    
 
 S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
 BUCKET = "catcollector-ryanne"
@@ -126,6 +134,23 @@ class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
 class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
   success_url = '/posts/'
+
+
+#extended profile update 
+# class ProfileUpdate(LoginRequiredMixin, UpdateView):
+#   model = Profile
+#   fields = '__all__'
+#   success_url = '/profile'
+
+
+  # post = Postcreated.objects.get(id = post_id)
+  # return render(request, 'posts/detail.html', {'post': post})
+
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
+ 
+#     description = models.CharField(max_length=200)
+#     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
 
 
