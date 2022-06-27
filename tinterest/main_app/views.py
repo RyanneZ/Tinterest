@@ -9,6 +9,8 @@ import boto3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .forms import ProfileForm
+
 #Profile
 
 from django import forms
@@ -50,18 +52,32 @@ def signup(request):
   context = {'form':form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-#show profile page
+
+
+# show profile page
 @login_required
 def showProfile(request):
-  
-    return render(request, 'profile.html') 
+  return render(request,'profile.html') 
+
 
 #renders update profile page 
 @login_required
 def profile_edit(request):
     print(request.user.id)
-    return render(request, 'registration/editprofile.html') 
-    
+    profile_form = ProfileForm()
+    return render(request, 'editprofile.html', {'profile_form': profile_form,
+    }) 
+
+
+#extended profile update 
+@login_required
+def update_profile(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.profile.description = request.POST['description']
+    user.save()
+    # return redirect(f'/profile/{user.id}')
+    return redirect('/profile/')
+
 
 S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
 BUCKET = "catcollector-ryanne"
@@ -77,7 +93,7 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
 
   def form_valid(self, form):
     form.instance.user = self.request.user
-    print(self.object.id)
+    # print(self.object.id)
     return super().form_valid(form)
 
   
