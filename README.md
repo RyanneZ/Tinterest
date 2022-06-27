@@ -1,4 +1,2 @@
-# project3
+# Tinterest
 
-some useful changes by Ryanne
-here are random changes blalalalal
