@@ -11,15 +11,22 @@
   <title>Welcome to Tinterest</title>
 </head>
 <body>
-  <h3>Sign Up</h3>
-  {% if error_messsage %}<p class="red-text">{{ error_message }}</p>{% endif %}
-  
-  <section class="wrapper wrap-signup">
-    <form method="post" action="{% url 'signup' %}">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" class="btn btn-signup" value="signup">
-    </form>
-  </section>
+    <section class="container">
+      <div class="navbar">
+        <a href="{% url 'welcome' %}"><img src="{% static 'img/back.png' %}" alt=""></a>
+        <h3>Sign Up</h3>
+      </div>
+      {% if error_messsage %}
+      <p class="red-text">{{ error_message }}</p>{% endif %}
+    </section>
+    <main class="container">  
+    <section class="wrapper wrap-signup">
+      <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-signup" value="signup">
+      </form>
+    </section>
+  </main>
 </body>
 </html>

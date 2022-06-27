@@ -12,12 +12,11 @@
   </div>
 </div>
 
-<button class="btn pink ">
-  <a href="{% url 'posts_update' post.id %}" class="white-text ">Edit</a>
+<button class="small-btn inactive">
+  <a href="{% url 'posts_delete' post.id %}" >Delete</a>
 </button>
-
-<button class="btn pink ">
-  <a href="{% url 'posts_delete' post.id %}" class="white-text" >Delete</a>
+<button class="small-btn pink">
+  <a href="{% url 'posts_update' post.id %}" class="white-text ">Edit</a>
 </button>
 
 

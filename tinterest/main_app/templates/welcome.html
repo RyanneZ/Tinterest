@@ -11,13 +11,15 @@
     <title>Welcome to Tinterest</title>
   </head>
   <body>
-    <section class="wrapper wrap-welcome">
-      <div class="logoImg-wrap">
-        <img src="static/img/tinterestLogo.png" alt="" />
-      </div>
-      <h1 class="header">Welcome to Tinterest</h1>
-      <a class="btn btn-signup"href="{% url 'signup' %}">Sign up</a>
-      <a class="btn btn-login" href="{% url 'login' %}">Log in</a>
-    </section>
+    <main class="container">
+      <section class="wrapper wrap-welcome">
+        <div class="logoImg-wrap">
+          <img src="static/img/tinterestLogo.png" alt="" />
+        </div>
+        <h1 class="header">Welcome to Tinterest</h1>
+        <a class="btn btn-signup"href="{% url 'signup' %}">Sign up</a>
+        <a class="btn btn-login" href="{% url 'login' %}">Log in</a>
+      </section>
+    </main>
   </body>
 </html>

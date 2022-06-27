@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h5 class="center-align">Profile</h5>
+<!-- <h5 class="center-align">Profile</h5> -->
 <br>
 <div style="display: flex; justify-content: center;" >
   <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
@@ -10,13 +10,13 @@
 <h5 class="center-align">{{ user.username }}</h5>
 <p class="text-secondary center-align">{{ user.profile.description }}tell your story</p>
 <div style="display: flex; justify-content: center;" >
-  <a class="waves-effect waves-light btn-small pink">Edit Profile</a>
+  <a class="small-btn pink">Edit Profile</a>
 </div>
 
 <a href="{% url 'posts_create' %}" class="right"><i class="material-icons pink-text">add</i></a>
-<div class="category-btns center">
+<div class="category-btns">
   <a class="created-btn" href="">Created</a>
-  <a class="btn-small pink" href="">Saved</a>
+  <a class="small-btn pink" href="">Saved</a>
 
 </div>
 {% endblock %}
