@@ -52,8 +52,8 @@ def signup(request):
 
 @login_required
 def showProfile(request):
-  
-    return render(request, 'profile.html') 
+    posts = Postcreated.objects.filter(user=request.user)
+    return render(request, 'profile.html', { 'posts': posts }) 
 
 class PostcreatedCreate(LoginRequiredMixin, CreateView):
   model = Postcreated

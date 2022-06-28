@@ -30,6 +30,7 @@
 .inactive {
   background-color: #F3EEEF;
   color: #212121;
+  margin-right: 8px;
 }
 /* container for created & saved btns on profile */
 .category-btns {
@@ -40,15 +41,34 @@
   gap: 1rem;
   margin: 2rem;
 }
-
-.created-btn {
+/* created and saved btns on profile */
+/* .created-btn {
   font-family: 'Inter', sans-serif;
   color: #212121;
+} */
+.category-button {
+  font-family: 'Inter', sans-serif;
+  color: #212121;
+  font-size: 14px;
 }
-.created-btn:hover {
+.category-button.active {
+  font-family: 'Inter', sans-serif;
+  color: white;
+  border-radius: 100px;
+  padding: 4px 16px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  background-color: #FF4D67;
+}
+/* .created-btn:hover {
   color: white;
   background-color: #FF4D67;
   border-radius: 100px;
   padding: 4px 16px;
   font-size: 14px;
+} */
+/* container for 2 cta btns side by side */
+.btn-container {
+  margin-top: 24px;
 }

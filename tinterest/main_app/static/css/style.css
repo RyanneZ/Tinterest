@@ -26,6 +26,9 @@ h1,h2,h3,h4, h5, h6 {
   font-family: 'Inter', sans-serif;
   font-weight:700;
 }
+h5 {
+  margin: 24px 0;
+}
 nav {
   -webkit-box-shadow: none; 
 } 
@@ -35,7 +38,13 @@ nav {
 .logoImg-wrap {
   width: 40%;
 }
-
+.tag {
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+#post-img {
+  border-radius: 20px;
+}
 /* nav specific styling */
 nav .brand-logo {
   height: 9% !important;
