@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h5 class="center-align">{{ user.username }}</h5>
+<h5 class="center-align">Profile</h5>
 <br>
 <div style="display: flex; justify-content: center;" >
   <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
 </div>
 
-<!-- <h5 class="center-align">{{ user.username }}</h5> -->
-<p class="text-secondary center-align">{{ user.profile.description }}</p>
+<h5 class="center-align">{{ user.username }}</h5>
+<p class="text-secondary center-align">{{ user.profile.bio }}</p>
+<p class="text-secondary center-align">{{ user.profile.website }}</p>
 <div style="display: flex; justify-content: center;" >
   <a href="{% url 'edit_profile' %}" class="waves-effect waves-light btn-small pink">Edit Profile</a>
 </div>

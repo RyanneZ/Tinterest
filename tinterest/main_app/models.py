@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -28,9 +29,9 @@ class Photo(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
- 
-    description = models.CharField(max_length=200)
+    bio = models.CharField(max_length=200)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    website = models.URLField(max_length=250)
 
 
 @receiver(post_save, sender=User)

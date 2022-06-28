@@ -9,7 +9,7 @@ import boto3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .forms import ProfileForm
+from .forms import ProfileForm, UserForm
 
 #Profile
 
@@ -65,18 +65,36 @@ def showProfile(request):
 def profile_edit(request):
     print(request.user.id)
     profile_form = ProfileForm()
-    return render(request, 'editprofile.html', {'profile_form': profile_form,
+    user_form = UserForm()
+    return render(request, 'editprofile.html', {'profile_form': profile_form, 'user_form': user_form
     }) 
 
 
-#extended profile update 
+# extended profile update 
 @login_required
 def update_profile(request, user_id):
     user = User.objects.get(id=user_id)
-    user.profile.description = request.POST['description']
+    user.username = request.POST['username']
+    user.profile.bio = request.POST['bio']
+    user.profile.website = request.POST['website']
     user.save()
-    # return redirect(f'/profile/{user.id}')
     return redirect('/profile/')
+
+    # extended profile update with attempted validation 
+# @login_required
+# def update_profile(request, user_id):
+#    user = User.objects.get(id=user_id)
+#    form = ProfileForm(request.POST)
+#    if form.is_valid():
+#      form = ProfileForm(request.POST)
+#      user.save()
+#      return redirect('/profile/')
+#    else:
+#       form = ProfileForm()
+#     return render(request, 'editprofile.html', {'form': form})
+ 
+
+
 
 
 S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
