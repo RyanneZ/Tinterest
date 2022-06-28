@@ -6,7 +6,7 @@
   
     <h4>Edit Profile</h4>
     <h5 class="center-align">{{ user.username }}</h5>
-<p class="text-secondary center-align">{{ user.profile.description }}</p>
+<p class="text-secondary center-align">{{ user.profile.about }}</p>
     <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ user_form.as_p }}

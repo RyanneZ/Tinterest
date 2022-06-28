@@ -75,7 +75,7 @@ def profile_edit(request):
 def update_profile(request, user_id):
     user = User.objects.get(id=user_id)
     user.username = request.POST['username']
-    user.profile.bio = request.POST['bio']
+    user.profile.about = request.POST['about']
     user.profile.website = request.POST['website']
     user.save()
     return redirect('/profile/')

@@ -5,14 +5,14 @@ from django import forms
 class ProfileForm(ModelForm): 
     class Meta: 
         model = Profile
-        fields = ['image', 'bio', 'website']
-
-# class ProfileForm(forms.Form): 
-#     bio = forms.CharField()
-#     url = forms.URLField(label='Website', required=False)
-    
+        fields = ['image', 'about', 'website']
         
 
+# class ProfileForm(forms.Form): 
+#     bio = forms.CharField(value="default value"), 
+#     url = forms.URLField(label='Website', required=False, default="default value")
+      
+    
 class UserForm(ModelForm): 
     class Meta: 
         model = User

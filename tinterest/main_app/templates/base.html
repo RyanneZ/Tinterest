@@ -23,8 +23,8 @@
       </a>
       <ul class="right hide-on-med-and-down">      
         {% if user.is_authenticated %} 
-        <li><a href="{% url 'home' %} " class="pink-text">Home</a></li>
-        <li><a href="#" class="pink-text">Edit Profile</a></li>
+        <li><a href="{% url 'home' %}" class="pink-text">Home</a></li>
+        <li><a href="{% url 'edit_profile' %}" class="pink-text">Edit Profile</a></li>
         <li><a href="#" class="pink-text">Saved</a></li>
         <li><a href="#"class="pink-text">Search</a></li>
         <li><a href="{% url 'logout' %}"class="pink-text">Log Out</a></li>
@@ -40,7 +40,7 @@
     {% if user.is_authenticated %} 
     
     <li ><a href="#" class="white-text"><i class="material-icons white-text">home</i>Home</a></li>
-    <li><a href="#" class="white-text"><i class="material-icons white-text">account_circle</i>Edit Profile</a></li>
+    <li><a href="{% url 'edit_profile' %}" class="white-text"><i class="material-icons white-text">account_circle</i>Edit Profile</a></li>
     <li><a href="#" class="white-text"><i class="material-icons white-text">favorite_border</i>Saved</a></li>
     <li><a href="#" class="white-text"><i class="material-icons white-text">search</i>Search</a></li>
     <li><a href="{% url 'logout' %}" class="white-text"><i class="material-icons white-text">logout</i>Log Out</a></li>
