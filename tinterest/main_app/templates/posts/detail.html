@@ -3,7 +3,7 @@
 
 <div class="card">
   <div class="card-content">
-    <img class='cover'src="{{ post.image }}">
+    <img class='cover'src="{{ post.image.url }}">
     <h5>{{ post.title }}</h5>
     <br>
     <p>{{ post.description }}</p>
@@ -21,7 +21,4 @@
 </button>
 
 
-
-<!-- <button>Delete</button>
-<button>Edit</button> -->
 {% endblock %}

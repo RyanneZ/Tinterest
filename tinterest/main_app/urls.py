@@ -11,7 +11,7 @@ urlpatterns = [
 
   #temperate profile url
   path('profile', views.showProfile, name='profile'),
-  path('posts/create',views.PostcreatedCreate.as_view(), name='posts_create'),
+  path('posts/createpost',views.createPost, name='posts_create'),
   path('posts/add_photo/', views.add_photo, name='add_photo'),
   path('posts/', views.posts_index, name='index'),
   path('posts/<int:post_id>/', views.posts_detail, name='detail'),
