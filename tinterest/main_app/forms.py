@@ -9,8 +9,8 @@ class ProfileForm(ModelForm):
         
 
 # class ProfileForm(forms.Form): 
-#     bio = forms.CharField(value="default value"), 
-#     url = forms.URLField(label='Website', required=False, default="default value")
+#     bio = forms.CharField(default="default value"), 
+#     url = forms.URLField(label='Website', required=False)
       
     
 class UserForm(ModelForm): 
