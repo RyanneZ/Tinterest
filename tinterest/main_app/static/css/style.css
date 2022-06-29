@@ -10,6 +10,7 @@ ol, ul, menu {
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 img {
   max-width: 100%;
@@ -25,11 +26,39 @@ h1,h2,h3,h4, h5, h6 {
   font-family: 'Inter', sans-serif;
   font-weight:700;
 }
+h5 {
+  margin: 24px 0;
+}
 nav {
   -webkit-box-shadow: none; 
 } 
 .pink-text {
   color:  #FF4D67 !important;
+}
+.logoImg-wrap {
+  width: 40%;
+}
+.tag {
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+#post-img {
+  border-radius: 20px;
+}
+/* nav specific styling */
+nav .brand-logo {
+  height: 9% !important;
+  top: 1.3rem !important;
+  left: 11% !important;
+}
+.brand-logo img {
+  height: 45%;
+}
+nav, .pink {
+  background-color: #FF4D67 !important ;
+}
+nav {
+  margin-top: 8px !important;
 }
 
 

@@ -3,13 +3,22 @@
 
 <h5>Posts Created</h5>
 
-{% for post in posts %}
+<!-- {% for post in posts %}
   <div class="card">
     <a href="{% url 'detail' post.id %}">
       <img class='cover'src="{{ post.image.url }}">
       
     </a>
   </div>
-{% endfor %}
+{% endfor %} -->
 
+<div class="post-container">
+  {% for post in posts %}
+    <div class="post-item">
+      <a href="{% url 'detail' post.id %}">
+        <img id= "post-img" class='cover'src="{{ post.image }}">
+      </a>
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}
