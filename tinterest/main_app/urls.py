@@ -8,7 +8,7 @@ urlpatterns = [
   path('', views.home, name='home'),
   path('welcome', views.welcome, name='welcome'),
   path('accounts/signup/', views.signup, name='signup'),
-
+  
   #temperate profile url
   path('profile/', views.showProfile, name='profile'),
   path('profile/edit/', views.profile_edit, name='edit_profile'),
