@@ -13,13 +13,21 @@
     <title>Welcome to Tinterest</title>
   </head>
   <body>
-    <h3>Log In</h3>
-
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="btn pink" value="login">
-        <input type="hidden" name="next" value="{{ next }}">
-    </form>
+    <section class="container">
+      <div class="navbar">
+        <a href="{% url 'welcome' %}"><img src="{% static 'img/back.png' %}" alt=""></a>
+        <h3>Log In</h3>
+      </div>
+    </section>
+    <main class="container">
+      <div class="wrapper wrap-signup">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-signup" value="login">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+      </div>
+    </main>
   </body>
 </html>
