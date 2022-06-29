@@ -93,11 +93,11 @@ def update_profile(request, user_id):
 #       form = ProfileForm()
 #     return render(request, 'editprofile.html', {'form': form})
  
-
-
-
-    posts = Postcreated.objects.filter(user=request.user)
-    return render(request, 'profile.html', { 'posts': posts }) 
+@login_required
+def posts_detail(request, post_id):
+  post = Postcreated.objects.get(id = post_id)
+  return render(request, 'posts/detail.html', {'post': post})
+ 
 
 S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
 BUCKET = "catcollector-ryanne"
@@ -124,13 +124,8 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
 
 
 #amazon photo uplode:
-<<<<<<< HEAD
-# S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
-# BUCKET = 'catcollector-tatyana-1984'
-=======
 S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
 BUCKET = 'catcollector-tatyana-1984'
->>>>>>> eaf4f1c3c3aa38f8d0fd625cc6e117992a011fa5
 
 @login_required
 def add_photo(request):
