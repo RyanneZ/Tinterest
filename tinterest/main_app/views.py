@@ -52,8 +52,8 @@ def signup(request):
 
 @login_required
 def showProfile(request):
-  
-    return render(request, 'profile.html') 
+    posts = Postcreated.objects.filter(user=request.user)
+    return render(request, 'profile.html', { 'posts': posts }) 
 
 S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
 BUCKET = "catcollector-ryanne"
@@ -62,18 +62,16 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
   model = Postcreated
   fields = '__all__'
   success_url = '/profile'
-
   def __str__(self):
     return self.title
-  
   def form_valid(self, form):
-    form.instance.user = self.request.user 
+    form.instance.user = self.request.user
     return super().form_valid(form)
 
 
 #amazon photo uplode:
-S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
-BUCKET = "catcollector-ryanne"
+S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
+BUCKET = 'catcollector-tatyana-1984'
 
 @login_required
 def add_photo(request):
