@@ -9,6 +9,8 @@ import boto3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .forms import ProfileForm, UserForm
+
 #Profile
 
 from django import forms
@@ -50,8 +52,50 @@ def signup(request):
   context = {'form':form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+
+
+# show profile page
 @login_required
 def showProfile(request):
+  return render(request,'profile.html') 
+
+
+#renders update profile page 
+@login_required
+def profile_edit(request):
+    print(request.user.id)
+    profile_form = ProfileForm()
+    user_form = UserForm()
+    return render(request, 'editprofile.html', {'profile_form': profile_form, 'user_form': user_form
+    }) 
+
+
+# extended profile update 
+@login_required
+def update_profile(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.username = request.POST['username']
+    user.profile.about = request.POST['about']
+    user.profile.website = request.POST['website']
+    user.save()
+    return redirect('/profile/')
+
+    # extended profile update with attempted validation 
+# @login_required
+# def update_profile(request, user_id):
+#    user = User.objects.get(id=user_id)
+#    form = ProfileForm(request.POST)
+#    if form.is_valid():
+#      form = ProfileForm(request.POST)
+#      user.save()
+#      return redirect('/profile/')
+#    else:
+#       form = ProfileForm()
+#     return render(request, 'editprofile.html', {'form': form})
+ 
+
+
+
     posts = Postcreated.objects.filter(user=request.user)
     return render(request, 'profile.html', { 'posts': posts }) 
 
@@ -67,6 +111,16 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
+
+  
+    
+  
+  # def form_valid(self, form):
+  #   response = super().form_valid(form) # saves object
+  #   print(self.object.id)
+  #   return response, self.object.id
+
+
 
 
 #amazon photo uplode:
@@ -111,6 +165,23 @@ class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
 class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
   success_url = '/posts/'
+
+
+#extended profile update 
+# class ProfileUpdate(LoginRequiredMixin, UpdateView):
+#   model = Profile
+#   fields = '__all__'
+#   success_url = '/profile'
+
+
+  # post = Postcreated.objects.get(id = post_id)
+  # return render(request, 'posts/detail.html', {'post': post})
+
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
+ 
+#     description = models.CharField(max_length=200)
+#     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
 
 
