@@ -60,5 +60,6 @@ nav, .pink {
 nav {
   margin-top: 8px !important;
 }
-
-
+.sidenav {
+  padding: 18px 16px;
+}
