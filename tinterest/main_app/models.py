@@ -48,6 +48,13 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 
+# class Comments(models.Model):
+# content = models.TextField(max_length=250)
+# post = models.ForeignKey(Postcreated, on_delete=models.CASCADE)
+# user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+
 
 
     
