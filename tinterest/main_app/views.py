@@ -57,7 +57,8 @@ def signup(request):
 # show profile page
 @login_required
 def showProfile(request):
-  return render(request,'profile.html') 
+  posts = Postcreated.objects.filter(user=request.user.id)
+  return render(request,'profile.html', {'posts': posts}) 
 
 
 #renders update profile page 
@@ -80,27 +81,8 @@ def update_profile(request, user_id):
     user.save()
     return redirect('/profile/')
 
-    # extended profile update with attempted validation 
-# @login_required
-# def update_profile(request, user_id):
-#    user = User.objects.get(id=user_id)
-#    form = ProfileForm(request.POST)
-#    if form.is_valid():
-#      form = ProfileForm(request.POST)
-#      user.save()
-#      return redirect('/profile/')
-#    else:
-#       form = ProfileForm()
-#     return render(request, 'editprofile.html', {'form': form})
- 
 
 
-
-    posts = Postcreated.objects.filter(user=request.user)
-    return render(request, 'profile.html', { 'posts': posts }) 
-
-S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
-BUCKET = "catcollector-ryanne"
 
 class PostcreatedCreate(LoginRequiredMixin, CreateView):
   model = Postcreated
@@ -114,12 +96,7 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
 
   
     
-  
-  # def form_valid(self, form):
-  #   response = super().form_valid(form) # saves object
-  #   print(self.object.id)
-  #   return response, self.object.id
-
+ 
 
 
 
