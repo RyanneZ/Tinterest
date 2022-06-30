@@ -57,7 +57,7 @@ def signup(request):
 # show profile page
 @login_required
 def showProfile(request):
-  return render(request,'profile.html') 
+  return render(request,'profile.html', ) 
 
 
 #renders update profile page 
@@ -124,13 +124,8 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
 
 
 #amazon photo uplode:
-<<<<<<< HEAD
-# S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
-# BUCKET = 'catcollector-tatyana-1984'
-=======
 S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
 BUCKET = 'catcollector-tatyana-1984'
->>>>>>> eaf4f1c3c3aa38f8d0fd625cc6e117992a011fa5
 
 @login_required
 def add_photo(request):
