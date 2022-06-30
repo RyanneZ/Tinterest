@@ -8,23 +8,19 @@ from django.dispatch import receiver
 
 # Create your models here.
 class Postcreated(models.Model):
-  image = models.CharField(max_length=200)
+  image = models.ImageField(null=False, blank=False)
   title = models.CharField(max_length=100)
   description = models.TextField(max_length=250)
   tags = models.CharField(max_length=100)
-
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-  def get_absolute_url(self):
-    return reverse('detail', kwargs={'post_id': self.id})
+  def __str__(self):
+    return self.description
 
 class Photo(models.Model):
-  url = models.CharField(max_length=200)
+ 
+  picture = models.FileField(upload_to='media/')
   post = models.ForeignKey(Postcreated(), on_delete=models.CASCADE)
-
-  def __str__(self):
-      return f"Photo for post_id: {self.post_id} @{self.url}"
-
 
 
 class Profile(models.Model):
