@@ -97,9 +97,6 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
   
     
  
-
-
-
 #amazon photo uplode:
 S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
 BUCKET = 'catcollector-tatyana-1984'
@@ -144,21 +141,7 @@ class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   success_url = '/posts/'
 
 
-#extended profile update 
-# class ProfileUpdate(LoginRequiredMixin, UpdateView):
-#   model = Profile
-#   fields = '__all__'
-#   success_url = '/profile'
 
-
-  # post = Postcreated.objects.get(id = post_id)
-  # return render(request, 'posts/detail.html', {'post': post})
-
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
- 
-#     description = models.CharField(max_length=200)
-#     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
 
 
