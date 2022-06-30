@@ -80,10 +80,6 @@ def update_profile(request, user_id):
 
 
 
-S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
-BUCKET = "catcollector-ryanne"
-
-
 class PostcreatedCreate(LoginRequiredMixin, CreateView):
   model = Postcreated
   fields = '__all__'
@@ -97,13 +93,8 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
   
     
 #amazon photo uplode:
-<<<<<<< HEAD
-# S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
-# BUCKET = 'catcollector-tatyana-1984'
-=======
 S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
 BUCKET = 'catcollector-tatyana-1984'
->>>>>>> eaf4f1c3c3aa38f8d0fd625cc6e117992a011fa5
 
 @login_required
 def add_photo(request):
