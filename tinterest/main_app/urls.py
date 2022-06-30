@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
   path('', views.home, name='home'),
-  path('welcome', views.welcome, name='welcome'),
+  path('welcome/', views.welcome, name='welcome'),
   path('accounts/signup/', views.signup, name='signup'),
   
   #temperate profile url
