@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 .btn-signup {
-  background-color: #FF4D67;
+  background-color: #BB3B80;
 }
 
 .btn-login {
@@ -59,7 +59,7 @@
   font-size: 14px;
   border: none;
   cursor: pointer;
-  background-color: #FF4D67;
+  background-color: #BB3B80;
 }
 /* .created-btn:hover {
   color: white;
