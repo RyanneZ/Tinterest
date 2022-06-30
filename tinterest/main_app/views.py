@@ -82,6 +82,11 @@ def update_profile(request, user_id):
     return redirect('/profile/')
 
 
+# class update_profile(LoginRequiredMixin, UpdateView):
+#   model = Profile
+#   # Let's disallow the renaming of a cat by excluding the name field!
+#   fields = '__all__'
+
 
 
 class PostcreatedCreate(LoginRequiredMixin, CreateView):

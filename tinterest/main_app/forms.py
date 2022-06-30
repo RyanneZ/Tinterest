@@ -17,3 +17,29 @@ class UserForm(ModelForm):
     class Meta: 
         model = User
         fields = ['username']
+
+
+# class ProfileForm(forms.ModelForm):
+   
+#     image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+
+#     about = forms.CharField(max_length=200, 
+#                             required=True,
+#                             widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+#     website = forms.URLField(required=True,
+#                              widget=forms.TextInput(attrs={'class': 'form-control'}))
+    
+
+#     class Meta:
+#         model = Profile
+#         fields = ['image', 'about', 'website']
+
+
+# class UserForm(ModelForm): 
+#     username = forms.CharField(max_length=100,
+#                                required=True,
+#                                widget=forms.TextInput(attrs={'class': 'form-control'}))
+#     class Meta: 
+#         model = User
+#         fields = ['username']
