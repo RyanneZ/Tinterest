@@ -21,9 +21,6 @@ from .models import Profile
 from django.contrib import messages
 
 
-
-
-
 # Define the welcome view (signup/login)
 def welcome(request):
   return render(request, 'welcome.html')
@@ -57,7 +54,8 @@ def signup(request):
 # show profile page
 @login_required
 def showProfile(request):
-  return render(request,'profile.html') 
+  posts = Postcreated.objects.filter(user=request.user.id)
+  return render(request,'profile.html', {'posts': posts}) 
 
 
 #renders update profile page 
@@ -99,8 +97,7 @@ def posts_detail(request, post_id):
   return render(request, 'posts/detail.html', {'post': post})
  
 
-S3_BASE_URL = "https://s3-website.ca-central-1.amazonaws.com"
-BUCKET = "catcollector-ryanne"
+
 
 class PostcreatedCreate(LoginRequiredMixin, CreateView):
   model = Postcreated
@@ -114,15 +111,6 @@ class PostcreatedCreate(LoginRequiredMixin, CreateView):
 
   
     
-  
-  # def form_valid(self, form):
-  #   response = super().form_valid(form) # saves object
-  #   print(self.object.id)
-  #   return response, self.object.id
-
-
-
-
 #amazon photo uplode:
 S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
 BUCKET = 'catcollector-tatyana-1984'
@@ -144,6 +132,7 @@ def add_photo(request):
       return HttpResponse("something went wrong with uploading to amazon s3")
   else:
     return HttpResponse("no photos were received")
+
 
 @login_required
 def posts_index(request):
@@ -168,21 +157,6 @@ class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   success_url = '/posts/'
 
 
-#extended profile update 
-# class ProfileUpdate(LoginRequiredMixin, UpdateView):
-#   model = Profile
-#   fields = '__all__'
-#   success_url = '/profile'
-
-
-  # post = Postcreated.objects.get(id = post_id)
-  # return render(request, 'posts/detail.html', {'post': post})
-
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
- 
-#     description = models.CharField(max_length=200)
-#     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
 
 
