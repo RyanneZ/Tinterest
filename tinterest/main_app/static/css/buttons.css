@@ -9,14 +9,20 @@
   margin-top: 0.375rem;
   cursor: pointer;
 }
-.btn-signup {
-  background-color: #BB3B80;
-}
-
-.btn-login {
+.btn-gray {
   background-color: #F3EEEF;
   color: #212121;
 }
+.btn-pink {
+  background-color: #BB3B80;
+}
+/* .btn-signup {
+  background-color: #BB3B80;
+}
+.btn-login {
+  background-color: #F3EEEF;
+  color: #212121;
+} */
 /* small buttons */
 .small-btn {
   font-family: 'Inter', sans-serif;
@@ -61,6 +67,16 @@
   cursor: pointer;
   background-color: #BB3B80;
 }
+.small-signup-btn {
+  font-family: 'Inter', sans-serif;
+  border-radius: 100px;
+  padding: 4px 16px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  background-color: #F3EEEF;
+  color: #212121;
+}
 /* .created-btn:hover {
   color: white;
   background-color: #FF4D67;
@@ -71,4 +87,15 @@
 /* container for 2 cta btns side by side */
 .btn-container {
   margin-top: 24px;
+}
+
+/* responsive */
+/* nav */
+@media screen and (min-width: 768px) {
+  nav .brand-logo {
+    top: 1.5rem !important;
+  }
+  .navbar {
+    gap: 420px;
+  }
 }

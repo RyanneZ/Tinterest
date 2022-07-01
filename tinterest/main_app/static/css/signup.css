@@ -56,7 +56,7 @@ that don't have container class */
   text-align: center;
 }
 
-.btn  {
+/* .btn  {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   color: white;
@@ -65,7 +65,7 @@ that don't have container class */
   margin-top: 0.375rem;
   border: none;
   outline: none;
-}
+} */
 
 /* form styles */
 .helptext {
@@ -85,8 +85,15 @@ form input {
 border: 1px solid #D9D9D9;
 margin-top: 8px;
 }
-.btn-signup {
-  background-color: #BB3B80;
+.lowered {
   margin-top: 270px;
+}
+
+/* responsive */
+@media screen and (min-width: 768px) {
+  
+  .navbar {
+    gap: 420px;
+  }
 }
 

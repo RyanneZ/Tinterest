@@ -3,16 +3,17 @@
 
 {% block content %}
 
-  
-    <h4>Edit Profile</h4>
+
+        <h3>Edit Profile</h3>
+    
     <h5 class="center-align">{{ user.username }}</h5>
 <p class="text-secondary center-align">{{ user.profile.about }}</p>
     <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ user_form.as_p }}
         {{ profile_form.as_p }}
-
-                <button type="submit">Submit</button>
+        <a class="small-btn inactive" href="{% url 'profile' %}" >Back</a>
+        <button class="small-btn pink" type="submit">Submit</button>
     </form>
    
  

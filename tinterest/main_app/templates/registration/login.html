@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Source+Sans+Pro:wght@400;700&display=swap"
       rel="stylesheet"/>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}" />
     <title>Welcome to Tinterest</title>
   </head>
@@ -24,7 +26,7 @@
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" class="btn btn-signup" value="login">
+            <input type="submit" class="btn btn-signup lowered" value="login">
             <input type="hidden" name="next" value="{{ next }}">
         </form>
       </div>
