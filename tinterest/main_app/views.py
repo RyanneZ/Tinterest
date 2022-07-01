@@ -9,7 +9,6 @@ import boto3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .forms import ProfileForm, UserForm
 
 #Profile
 
@@ -65,9 +64,8 @@ def showProfile(request):
 @login_required
 def profile_edit(request):
     print(request.user.id)
-    profile_form = ProfileForm()
-    user_form = UserForm()
-    return render(request, 'editprofile.html', {'profile_form': profile_form, 'user_form': user_form
+    user = User.objects.get(id=request.user.id)
+    return render(request, 'editprofile.html', {'user': user
     }) 
 
 
@@ -78,6 +76,7 @@ def update_profile(request, user_id):
     user.username = request.POST['username']
     user.profile.about = request.POST['about']
     user.profile.website = request.POST['website']
+    # user.profile.image = request.POST['image']
     user.save()
     return redirect('/profile/')
 
