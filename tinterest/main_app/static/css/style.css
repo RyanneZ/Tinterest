@@ -33,6 +33,7 @@ h5 {
 nav {
   -webkit-box-shadow: none !important; 
 } 
+
 .pink-text {
   color:  #BB3B80 !important;
 }
@@ -57,7 +58,7 @@ nav .brand-logo {
 .brand-logo img {
   height: 45%;
 }
-nav, .newPink {
+nav, .pink {
   background-color: #BB3B80 !important ;
 }
 nav {
