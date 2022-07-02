@@ -72,7 +72,11 @@ nav {
   padding-top: 40px;
 }
 /* form styles */
-
+.wrap-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .helptext {
   display: none;
 }
@@ -83,8 +87,10 @@ flex-direction: column;
 form label {
 align-self: flex-start;
 font-weight: 700;
-font-size: 1.2rem;
+font-size: 24px;
 margin-top: 24px;
+color: #212121;
+font-family: 'Inter', sans-serif;
 }
 form input {
 border: 1px solid #D9D9D9;
@@ -93,4 +99,7 @@ margin-top: 8px;
 .btn-signup {
   background-color: #BB3B80;
   margin-top: 270px;
+}
+.form-btns {
+  
 }

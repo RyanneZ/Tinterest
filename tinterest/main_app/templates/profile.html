@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- <h5 class="center-align">Profile</h5> -->
+<h6 class="center-align">Profile</h6>
 <br>
 <div style="display: flex; justify-content: center;" >
   <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
@@ -24,7 +24,7 @@
   {% for post in posts %}
     <div class="post-item">
       <a href="{% url 'detail' post.id %}">
-        <img class='cover'src="{{ post.image }}">
+        <img id="post-img" class='cover'src="{{ post.image }}">
       </a>
     </div>
   {% endfor %}
