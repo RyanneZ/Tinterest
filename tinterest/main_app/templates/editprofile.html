@@ -8,25 +8,15 @@
     
 <!-- <h5 class="center-align">{{ user.username }}</h5>
 <p class="text-secondary center-align">{{ user.profile.about }}</p> -->
-    <section class="wrapper wrap-form">
+    <section class="">
         <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
-            {% csrf_token %}
-           
-                <div>
-                    <label for="username">Username</label>
-                    <input type="text" name="username" placeholder="{{ user.username }}" value="{{ user.username }}"></input>
-                </div>
-            
-           
-                <label for="about">About</label>
-                <textarea name="about" placeholder="{{ user.profile.about }}">{{ user.profile.about }}</textarea>
-                
-            
-           
-                <label for="website">Website</label>
-                <input type="text" name="website" placeholder="{{ user.profile.website }}" value="{{ user.profile.website }}"></input>
-           
-            
+            {% csrf_token %} 
+            <label for="username">Username</label>
+            <input id="boxBorder" type="text" name="username" placeholder="{{ user.username }}" value="{{ user.username }}"></input>
+            <label for="about">About</label>
+            <textarea id="boxBorder" name="about" placeholder="{{ user.profile.about }}">{{ user.profile.about }}</textarea>
+            <label for="website">Website</label>
+            <input id="boxBorder" type="text" name="website" placeholder="{{ user.profile.website }}" value="{{ user.profile.website }}"></input>
             <div class="btn-container right">
                 <a class="small-btn inactive" href="{% url 'profile' %}" >Back</a>
                 <button class="small-btn pink" type="submit">Submit</button>

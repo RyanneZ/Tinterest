@@ -126,7 +126,9 @@ def posts_index(request):
 @login_required
 def posts_detail(request, post_id):
   post = Postcreated.objects.get(id = post_id)
-  return render(request, 'posts/detail.html', {'post': post})
+  # add user info
+  # user = User.objects.get(id=user_id)
+  return render(request, 'posts/detail.html', {'post': post} )
 
 
 

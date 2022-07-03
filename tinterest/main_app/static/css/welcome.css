@@ -50,3 +50,10 @@ that don't have it */
   width: 40%;
 }
 
+/* responsiveness */
+@media screen and (min-width: 768px) {
+  .logoImg-wrap {
+    width: 20%;
+  }
+  
+}
