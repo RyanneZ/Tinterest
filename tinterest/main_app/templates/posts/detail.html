@@ -21,9 +21,11 @@
   </button>
 </div>
 <h4>Comments:</h4>
-<form method="POST" action="{% url 'comments_create' %}">
+<form method="POST" action="{% url 'comments_create' post.id %}">
   {% csrf_token %}
-  {{ form.as_p}}
+  <label for="comment">Comment:</label><br>
+  <input type="text" name="content"></input>
+  <button type="submit">Submit</button>
  
 </form>
 

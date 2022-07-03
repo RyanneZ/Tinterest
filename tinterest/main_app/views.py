@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Postcreated, Photo, Comments
+from .models import Postcreated, Photo, Comments, User
 import uuid
 import boto3
 from django.contrib.auth.decorators import login_required
@@ -140,15 +140,15 @@ class PostcreatedDelete(LoginRequiredMixin, DeleteView):
 
 
 
-class comments_create(LoginRequiredMixin, CreateView):
-  model = Comments
-  fields = '__all__'
-  # success_url = '/profile'
-  def __str__(self):
-    return self.content
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
+# class comments_create(LoginRequiredMixin, CreateView):
+#   model = Comments
+#   fields = '__all__'
+#   # success_url = '/profile'
+#   def __str__(self):
+#     return self.content
+#   def form_valid(self, form):
+#     form.instance.user = self.request.user
+#     return super().form_valid(form)
 
 # controller/view function to handle incoming form data from user
 
@@ -161,12 +161,16 @@ class comments_create(LoginRequiredMixin, CreateView):
 #   )
 #   return redirect(f'/cats/{cat.id}')
 
-# @login_required
-# def comments_create(request):
-#   comment = Comments.objects.create(
-#     content = request.POST['content']
-#   )
-#   return HttpResponse('it worked')
+@login_required
+def comments_create(request, post_id):
+
+  Comments.objects.create(
+    content = request.POST['content'],
+    post = Postcreated.objects.get(id = post_id),
+    user = User.objects.get(id = request.user.id)
+  )
+
+  return redirect(f'/posts/{post_id}/')
 
 
 
