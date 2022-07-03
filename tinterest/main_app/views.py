@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Postcreated, Photo 
+from .models import Postcreated, Photo, Comments
 import uuid
 import boto3
 from django.contrib.auth.decorators import login_required
@@ -137,6 +137,18 @@ class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
 class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
   success_url = '/posts/'
+
+
+
+class comments_create(LoginRequiredMixin, CreateView):
+  model = Comments
+  fields = 'content'
+  # success_url = '/profile'
+  def __str__(self):
+    return self.content
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
 
 
