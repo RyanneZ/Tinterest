@@ -53,6 +53,8 @@ class Comments(models.Model):
   post = models.ForeignKey(Postcreated, on_delete=models.CASCADE)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+  
+
  
 
   

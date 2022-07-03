@@ -124,6 +124,8 @@ def posts_index(request):
 
 @login_required
 def posts_detail(request, post_id):
+  comments = Comments.objects.filter(post = post_id)
+  print(comments)
   post = Postcreated.objects.get(id = post_id)
   return render(request, 'posts/detail.html', {'post': post})
 
@@ -140,26 +142,6 @@ class PostcreatedDelete(LoginRequiredMixin, DeleteView):
 
 
 
-# class comments_create(LoginRequiredMixin, CreateView):
-#   model = Comments
-#   fields = '__all__'
-#   # success_url = '/profile'
-#   def __str__(self):
-#     return self.content
-#   def form_valid(self, form):
-#     form.instance.user = self.request.user
-#     return super().form_valid(form)
-
-# controller/view function to handle incoming form data from user
-
-# def cats_create(request):
-#   cat = Cat.objects.create(
-#     name=request.POST['name'],
-#     breed=request.POST['breed'],
-#     description=request.POST['description'],
-#     age=request.POST['age']
-#   )
-#   return redirect(f'/cats/{cat.id}')
 
 @login_required
 def comments_create(request, post_id):
