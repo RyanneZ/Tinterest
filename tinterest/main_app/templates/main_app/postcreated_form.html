@@ -19,9 +19,10 @@
     {% endfor %}
  
 
+    <form method="POST" action="{% url 'comments_create' %}">
     <table>
       <!-- Render the inputs inside of <tr>s & <td>s -->
-      {{ form }}
+      {{ form.as_p }}
     </table>
     <input type="submit" value="Done!" class="small-btn pink">
   </form>

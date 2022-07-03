@@ -140,15 +140,26 @@ class PostcreatedDelete(LoginRequiredMixin, DeleteView):
 
 
 
-class comments_create(LoginRequiredMixin, CreateView):
-  model = Comments
-  fields = 'content'
-  # success_url = '/profile'
-  def __str__(self):
-    return self.content
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
+# class comments_create(LoginRequiredMixin, CreateView):
+#   model = Comments
+#   fields = '__all__'
+#   # success_url = '/profile'
+#   def __str__(self):
+#     return self.content
+#   def form_valid(self, form):
+#     form.instance.user = self.request.user
+#     return super().form_valid(form)
+
+# controller/view function to handle incoming form data from user
+def cats_create(request):
+  cat = Cat.objects.create(
+    name=request.POST['name'],
+    breed=request.POST['breed'],
+    description=request.POST['description'],
+    age=request.POST['age']
+  )
+  return redirect(f'/cats/{cat.id}')
+
 
 
 
