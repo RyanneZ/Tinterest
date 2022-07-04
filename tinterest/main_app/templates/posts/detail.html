@@ -4,7 +4,8 @@
 <div class="card">
   <div class="card-content">
     <img class='cover'src="{{ post.image }}">
-    <p class="tag">{{ post.user }}<span>Follow</span></p>
+    <a href="{% url 'show_public_profile' post.user.id %}">{{ post.user }}</a>
+    <!-- <p class="tag">{{ post.user }}<span>Follow</span></p> -->
     <h2>{{ post.title }}</h2>
     <br>
     <p>{{ post.description }}</p>

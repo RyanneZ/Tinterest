@@ -59,6 +59,28 @@ def showProfile(request):
   posts = Postcreated.objects.filter(user=request.user.id)
   return render(request,'profile.html', {'posts': posts}) 
 
+# show public user page
+# @login_required
+# def show_public_profile(request, user_id):
+#   print(user_id)
+#   print(request.user.id)
+#   if user_id == request.user.id:
+#     return redirect('/profile/')
+#   else: 
+#     return HttpResponse('here is public user profile')
+
+@login_required
+def show_public_profile(request, user_id):
+  print(user_id)
+  print(request.user.id)
+  user = User.objects.get(id=user_id)
+  posts = Postcreated.objects.filter(user=user_id)
+  return render(request, 'public-user-profile.html', {'user': user, 'posts': posts})
+
+
+
+
+
 
 #renders update profile page 
 @login_required
@@ -128,6 +150,7 @@ def posts_detail(request, post_id):
   comments = Comments.objects.filter(post = post_id)
   # print(comment.user)
   post = Postcreated.objects.get(id = post_id)
+  # print(post.user.id)
   return render(request, 'posts/detail.html', {'post': post, 'comments': comments})
 
 
