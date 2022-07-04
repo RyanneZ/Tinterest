@@ -50,4 +50,16 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 
-    
+
+
+
+# saved posts
+# class SavedPost(models.Model):
+#     image = models.ImageField(null=False, blank=False)
+#     title = models.CharField(max_length=100)
+#     description = models.TextField(max_length=250)
+#     tags = models.CharField(max_length=100)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Savedpost(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post = models.ForeignKey(Postcreated,on_delete=models.CASCADE) 

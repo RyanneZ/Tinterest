@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+  <div class="card-content">
+    <img id="post-img" class='cover'src="{{ post.image }}">
+    <h2>{{ post.title }}</h2>
+    <br>
+    <!-- <h4>{{user.name}}</h4> -->
+    <p>{{ post.description }}</p>
+    <p class="tag">{{ post.tags }}</p>
+   
+  </div>
+</div>
+
+<div class="btn-container right">
+  <button class="small-btn inactive">
+    <a href="{% url 'posts_delete' post.id %}" >Back</a>
+  </button>
+  <button class="small-btn pink">
+    <a href="{% url 'posts_update' post.id %}">Save</a>
+  </button>
+</div>
+
+
+
+<!-- <button>Delete</button>
+<button>Edit</button> -->
+{% endblock %}
