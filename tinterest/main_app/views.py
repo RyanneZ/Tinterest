@@ -75,7 +75,10 @@ def show_public_profile(request, user_id):
   print(request.user.id)
   user = User.objects.get(id=user_id)
   posts = Postcreated.objects.filter(user=user_id)
-  return render(request, 'public-user-profile.html', {'user': user, 'posts': posts})
+  if user_id == request.user.id:
+    return redirect('/profile/')
+  else:
+   return render(request, 'public-user-profile.html', {'user': user, 'posts': posts})
 
 
 
