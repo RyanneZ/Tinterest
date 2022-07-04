@@ -139,9 +139,16 @@ def add_photo(request):
   else:
     return HttpResponse("no photos were received")
 
+# @login_required
+# def posts_index(request):
+#   posts = Postcreated.objects.filter(user=request.user)
+#   return render(request, 'posts/index.html', { 'posts': posts })
+
 @login_required
 def posts_index(request):
-  posts = Postcreated.objects.filter(user=request.user)
+  # posts = Postcreated.objects.filter(user=request.user)
+  # to see all the posts created:
+  posts = Postcreated.objects.all()
   return render(request, 'posts/index.html', { 'posts': posts })
 
 @login_required
