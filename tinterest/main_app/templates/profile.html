@@ -14,7 +14,7 @@
   <a href="{% url 'edit_profile' %}" class="waves-effect waves-light btn-small pink">Edit Profile</a>
 </div>
 
-<a href="{% url 'posts_create' %}" class="right"><i class="material-icons">add</i></a>
+<a href="{% url 'new_post' %}" class="right"><i class="material-icons">add</i></a>
 <div class="category-btns">
   <a id="created-btn" class="category-button" href="">Created</a>
   <a id="saved-btn" class="category-button active" href="">Saved</a>
@@ -24,7 +24,7 @@
   {% for post in posts %}
     <div class="post-item">
       <a href="{% url 'detail' post.id %}">
-        <img class='cover'src="{{ post.image }}">
+        <img class='cover'src="{{ post.image.url }}">
       </a>
     </div>
   {% endfor %}
