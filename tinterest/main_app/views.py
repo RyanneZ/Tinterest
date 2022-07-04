@@ -124,10 +124,11 @@ def posts_index(request):
 
 @login_required
 def posts_detail(request, post_id):
+  # comment = Comments.objects.get(post = post_id)
   comments = Comments.objects.filter(post = post_id)
-  print(comments)
+  # print(comment.user)
   post = Postcreated.objects.get(id = post_id)
-  return render(request, 'posts/detail.html', {'post': post})
+  return render(request, 'posts/detail.html', {'post': post, 'comments': comments})
 
 
 

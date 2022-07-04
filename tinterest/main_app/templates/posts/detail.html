@@ -20,14 +20,21 @@
     <a href="{% url 'posts_update' post.id %}" class="white-text ">Edit</a>
   </button>
 </div>
+
 <h4>Comments:</h4>
 <form method="POST" action="{% url 'comments_create' post.id %}">
   {% csrf_token %}
   <label for="comment">Comment:</label><br>
   <input type="text" name="content"></input>
   <button type="submit">Submit</button>
- 
-</form>
+ </form>
+
+ <div>
+  {% for comment in comments %}
+    <p><strong>{{ comment.user}}</strong>{{ comment.content }}</p>
+  {% endfor %}
+</div>
+
 
 
 <!-- <button>Delete</button>
