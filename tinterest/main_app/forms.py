@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Profile, User
+from .models import Profile, User, Postcreated
 from django import forms
 
 class ProfileForm(ModelForm): 
@@ -7,13 +7,14 @@ class ProfileForm(ModelForm):
         model = Profile
         fields = ['image', 'about', 'website']
         
-
-# class ProfileForm(forms.Form): 
-#     bio = forms.CharField(default="default value"), 
-#     url = forms.URLField(label='Website', required=False)
-      
-    
+       
 class UserForm(ModelForm): 
     class Meta: 
         model = User
         fields = ['username']
+
+class PostcreatedForm(ModelForm):
+    class Meta:
+        model = Postcreated
+        fields = ['image', 'title', 'description', 'tags']
+  

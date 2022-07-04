@@ -9,7 +9,7 @@ import boto3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .forms import ProfileForm, UserForm
+from .forms import ProfileForm, UserForm, PostcreatedForm
 
 #Profile
 
@@ -84,24 +84,6 @@ def update_profile(request, user_id):
 
 
 
-class PostcreatedCreate(LoginRequiredMixin, CreateView):
-  model = Postcreated
-  fields = '__all__'
-  success_url = '/profile/'
-  def __str__(self):
-    return self.title
-
-
-  
-    
- 
-#amazon photo uplode:
-S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
-BUCKET = 'catcollector-tatyana-1984'
-
-
-
-
 @login_required
 def posts_index(request):
   posts = Postcreated.objects.filter(user=request.user)
@@ -114,10 +96,6 @@ def posts_detail(request, post_id):
 
 
 
-class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
-  model = Postcreated
-  # Let's disallow the renaming of a cat by excluding the name field!
-  fields = '__all__'
   
 class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
@@ -138,7 +116,14 @@ def posts_create(request):
   )
   return redirect(f'/posts/{post.id}/')
 
+def posts_edit(request, post_id):
 
+  post = Postcreated.objects.get(id=post_id)
+  form = PostcreatedForm(request.POST or None, request.FILES or None, instance = post)
+  if form.is_valid():
+    form.save()
+    return redirect(f'/posts/{post.id}/')
+  return render(request, 'posts/edit.html', {'post': post, 'form': form})
 
 
 
