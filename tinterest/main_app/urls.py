@@ -20,6 +20,7 @@ urlpatterns = [
   path('posts/<int:pk>/update/', views.PostcreatedUpdate.as_view(), name='posts_update'),
   path('posts/<int:pk>/delete/', views.PostcreatedDelete.as_view(), name='posts_delete'),
 
+  path('users/<int:user_id>/', views.show_public_profile, name='show_public_profile'),
 ]
 
 if settings.DEBUG:

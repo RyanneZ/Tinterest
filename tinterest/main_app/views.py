@@ -1,8 +1,10 @@
+from os import F_OK
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from platformdirs import user_cache_dir, user_log_dir
 from .models import Postcreated, Photo 
 import uuid
 import boto3
@@ -58,6 +60,18 @@ def signup(request):
 def showProfile(request):
   posts = Postcreated.objects.filter(user=request.user.id)
   return render(request,'profile.html', {'posts': posts}) 
+
+# show public user page
+@login_required
+def show_public_profile(request, user_id):
+  print(user_id)
+  print(request.user.id)
+  user = User.objects.get(id=user_id)
+  posts = Postcreated.objects.filter(user=user_id)
+  if user_id == request.user.id:
+    return redirect('/profile/')
+  else:
+   return render(request, 'public-user-profile.html', {'user': user, 'posts': posts})
 
 
 #renders update profile page 
@@ -125,12 +139,16 @@ def posts_index(request):
   posts = Postcreated.objects.all()
   return render(request, 'posts/index.html', { 'posts': posts })
 
+# show detail page (if not user's detail page, show readDetail)
 @login_required
 def posts_detail(request, post_id):
   post = Postcreated.objects.get(id = post_id)
-  # add user info
-  # user = User.objects.get(id=user_id)
-  return render(request, 'posts/detail.html', {'post': post} )
+# if user id = to logged in user show detail page with "edit btn", if not show detail page with "save btn"
+  if request.user == post.user:
+    return render(request, 'posts/detail.html', {'post': post} )
+  else:
+    return render(request, 'posts/readDetail.html', {'post': post} )
+
 
 
 
