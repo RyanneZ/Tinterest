@@ -32,9 +32,25 @@
 
  <div>
   {% for comment in comments %}
-    <p><a href="{% url 'show_public_profile' post.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    {% if comment.user.id == request.user.id %} 
+    <p><a href="{% url 'show_public_profile' comment.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    <form method="POST" action="{% url 'comments_delete' post.id comment.id %}">
+      {% csrf_token %}
+      <label for="delete">Delete comment:</label>
+      <button type="submit">Delete</button>
+     </form>
+    {% else %}
+    <p><a href="{% url 'show_public_profile' comment.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    {% endif %}
   {% endfor %}
 </div>
+
+
+<!-- {% if comment.user.id == request.user.id %} 
+{% else %}
+{% endif %} -->
+
+
 
 
 

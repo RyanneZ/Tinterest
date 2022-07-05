@@ -156,11 +156,8 @@ def posts_index(request):
 
 @login_required
 def posts_detail(request, post_id):
-  # comment = Comments.objects.get(post = post_id)
   comments = Comments.objects.filter(post = post_id)
-  # print(comment.user)
   post = Postcreated.objects.get(id = post_id)
-  # print(post.user.id)
   return render(request, 'posts/detail.html', {'post': post, 'comments': comments})
 
 
@@ -187,6 +184,16 @@ def comments_create(request, post_id):
   )
 
   return redirect(f'/posts/{post_id}/')
+
+
+@login_required
+def comments_delete(request, comment_id, post_id):
+  post = Postcreated.objects.get(id = post_id),
+  Comments.objects.get(id=comment_id).delete()
+  return redirect(f'/posts/{post_id}/')
+
+
+
 
 
 
