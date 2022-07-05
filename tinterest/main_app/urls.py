@@ -18,8 +18,8 @@ urlpatterns = [
   path('posts/', views.posts_index, name='index'),
   path('posts/<int:post_id>/', views.posts_detail, name='detail'),
   path('posts/<int:post_id>/edit/', views.posts_edit, name='edit_post'),
-  # path('posts/<int:post_id>/submit_update_form/', views.posts_update),
   path('posts/<int:pk>/delete/', views.PostcreatedDelete.as_view(), name='posts_delete'),
+  path('search_posts', views.search_posts, name='search_posts')
 
 ]
 

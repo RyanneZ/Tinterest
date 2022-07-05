@@ -17,4 +17,6 @@ class PostcreatedForm(ModelForm):
     class Meta:
         model = Postcreated
         fields = ['image', 'title', 'description', 'tags']
+
+  
   

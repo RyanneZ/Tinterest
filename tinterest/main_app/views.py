@@ -126,4 +126,13 @@ def posts_edit(request, post_id):
   return render(request, 'posts/edit.html', {'post': post, 'form': form})
 
 
-
+def search_posts(request):
+  if request.method == 'POST':
+    searched = request.POST['searched']
+    posts = Postcreated.objects.filter(title__contains=searched)
+    return render(request, 'search.html', {'searched': searched, 'posts': posts})
+  else:
+    return render(request, 'search.html')
+    
+    
+  
