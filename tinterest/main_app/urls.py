@@ -21,6 +21,7 @@ urlpatterns = [
   path('posts/<int:pk>/delete/', views.PostcreatedDelete.as_view(), name='posts_delete'),
 
   path('users/<int:user_id>/', views.show_public_profile, name='show_public_profile'),
+  path('posts/<int:post_id>/saved', views.save_post, name='save_post')
 ]
 
 if settings.DEBUG:

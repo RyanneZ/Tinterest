@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from platformdirs import user_cache_dir, user_log_dir
-from .models import Postcreated, Photo 
+from .models import Postcreated, Photo, Savedpost
 import uuid
 import boto3
 from django.contrib.auth.decorators import login_required
@@ -143,7 +143,7 @@ def posts_index(request):
 @login_required
 def posts_detail(request, post_id):
   post = Postcreated.objects.get(id = post_id)
-# if user id = to logged in user show detail page with "edit btn", if not show detail page with "save btn"
+# if user id = logged in user show detail page with "edit btn", if not show detail page with "save btn"
   if request.user == post.user:
     print(request.user)
     return render(request, 'posts/detail.html', {'post': post} )
@@ -165,6 +165,13 @@ class PostcreatedDelete(LoginRequiredMixin, DeleteView):
 
 
 
+# save post
+def save_post(request, post_id):
+  Savedpost.objects.create(
+    post = Postcreated.objects.get(id = post_id),
+    user = User.objects.get(id = request.user.id)
+  )
+  return redirect('/profile/')
 
 
 
