@@ -32,7 +32,7 @@
 
  <div>
   {% for comment in comments %}
-    <p><strong>{{ comment.user}}</strong>{{ comment.content }}</p>
+    <p><a href="{% url 'show_public_profile' post.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
   {% endfor %}
 </div>
 
