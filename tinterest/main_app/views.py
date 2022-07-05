@@ -131,7 +131,8 @@ def add_photo(request):
       return HttpResponse("something went wrong with uploading to amazon s3")
   else:
     return HttpResponse("no photos were received")
-
+    
+# this will be the home feed
 @login_required
 def posts_index(request):
   # posts = Postcreated.objects.filter(user=request.user)
