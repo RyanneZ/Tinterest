@@ -145,6 +145,7 @@ def posts_detail(request, post_id):
   post = Postcreated.objects.get(id = post_id)
 # if user id = to logged in user show detail page with "edit btn", if not show detail page with "save btn"
   if request.user == post.user:
+    print(request.user)
     return render(request, 'posts/detail.html', {'post': post} )
   else:
     return render(request, 'posts/readDetail.html', {'post': post} )
