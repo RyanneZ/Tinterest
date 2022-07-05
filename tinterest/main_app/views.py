@@ -60,14 +60,17 @@ def signup(request):
 def showProfile(request):
   posts = Postcreated.objects.filter(user=request.user.id)
   print(posts)
-  savedposts = Savedpost.objects.filter(user= request.user)
-  print(savedposts)
+  savedposts = Savedpost.objects.filter(user = request.user)
+  print(savedposts[post_id])
+  # iterate over savedposts grab the post.img and put that into a new list
   return render(request,'profile.html', {'posts': posts, 'savedposts': savedposts}) 
 
 @login_required
 def showProfile_saved_posts(request):
   savedposts = Savedpost.objects.filter(user= request.user)
   print(savedposts)
+  
+
   return render(request,'profile-saved-posts.html', {'savedposts': savedposts}) 
   
 # show public user page
@@ -147,6 +150,7 @@ def posts_index(request):
   # posts = Postcreated.objects.filter(user=request.user)
   # to see all the posts created:
   posts = Postcreated.objects.all()
+  # loop X times, grab a random item and put that in the list, delete it from the old list (to show randomly)
   return render(request, 'posts/index.html', { 'posts': posts })
 
 # show detail page (if not user's detail page, show readDetail)
