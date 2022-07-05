@@ -59,8 +59,17 @@ def signup(request):
 @login_required
 def showProfile(request):
   posts = Postcreated.objects.filter(user=request.user.id)
-  return render(request,'profile.html', {'posts': posts}) 
+  print(posts)
+  savedposts = Savedpost.objects.filter(user= request.user)
+  print(savedposts)
+  return render(request,'profile.html', {'posts': posts, 'savedposts': savedposts}) 
 
+@login_required
+def showProfile_saved_posts(request):
+  savedposts = Savedpost.objects.filter(user= request.user)
+  print(savedposts)
+  return render(request,'profile-saved-posts.html', {'savedposts': savedposts}) 
+  
 # show public user page
 @login_required
 def show_public_profile(request, user_id):
@@ -131,7 +140,7 @@ def add_photo(request):
       return HttpResponse("something went wrong with uploading to amazon s3")
   else:
     return HttpResponse("no photos were received")
-    
+
 # this will be the home feed
 @login_required
 def posts_index(request):

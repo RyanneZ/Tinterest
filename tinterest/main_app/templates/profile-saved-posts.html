@@ -23,21 +23,19 @@
 <div class="row">
   <div class="col s12">
     <ul class="tabs">
-      <li class="tab col s3"><a class="active" href="#test2">Created</a></li>
-      <li class="tab col s3"><a href="{% url 'profile_saved_posts' %}">Saved</a></li>
+      <li class="tab col s3"><a href="#test2">Created</a></li>
+      <li class="tab col s3"><a class="active" href="#test4">Saved</a></li>
     </ul>
   </div>
 </div>
-<!-- added the posts created below -->
+<!-- added the saved posts below -->
 <div class="post-container">
-  {% for post in posts %}
+  {% for savedpost in savedposts %}
     <div class="post-item">
-      <a href="{% url 'detail' post.id %}">
-        <img id="post-img" class='cover'src="{{ post.image }}">
+      <a href="{% url 'detail' savedpost.id %}">
+        <img id="post-img" class='cover'src="{{ savedpost.image }}">
       </a>
     </div>
   {% endfor %}
 </div>
-{{savedposts}}
-
 {% endblock %}
