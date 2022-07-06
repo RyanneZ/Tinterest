@@ -61,7 +61,7 @@ def showProfile(request):
   posts = Postcreated.objects.filter(user=request.user.id)
   print(posts)
   savedposts = Savedpost.objects.filter(user = request.user)
-  print(savedposts[post_id])
+  # print(savedposts.post)
   # iterate over savedposts grab the post.img and put that into a new list
   return render(request,'profile.html', {'posts': posts, 'savedposts': savedposts}) 
 

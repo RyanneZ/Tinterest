@@ -43,8 +43,8 @@
 <div id= "saved-posts" class="post-container">
   {% for savedpost in savedposts %}
     <div class="post-item">
-      <a href="">
-        <img id="post-img" class='cover'src="{{ post.image }}">
+      <a href="{% url 'detail' savedpost.post.id %}">
+        <img id="post-img" class='cover'src="{{ savedpost.post.image}}">
       </a>
     </div>
   {% endfor %}
