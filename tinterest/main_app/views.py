@@ -178,6 +178,7 @@ def save_post(request, post_id):
     post = Postcreated.objects.get(id = post_id),
     user = User.objects.get(id = request.user.id)
   )
+  
   return redirect('/profile/')
 
 
