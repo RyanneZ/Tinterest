@@ -129,7 +129,7 @@ def posts_edit(request, post_id):
 def search_posts(request):
   if request.method == 'POST':
     searched = request.POST['searched']
-    posts = Postcreated.objects.filter(title__contains=searched)
+    posts = Postcreated.objects.filter(title__contains=searched,tags__contains=searched)
     return render(request, 'search.html', {'searched': searched, 'posts': posts})
   else:
     return render(request, 'search.html')
