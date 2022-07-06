@@ -151,7 +151,7 @@ def add_photo(request):
 def posts_index(request):
   # posts = Postcreated.objects.filter(user=request.user)
   # to see all the posts created:
-  posts = Postcreated.objects.all()
+  posts = Postcreated.objects.order_by('?')
   return render(request, 'posts/index.html', { 'posts': posts })
 
 @login_required
