@@ -143,8 +143,7 @@ def add_photo(request):
 def posts_index(request):
   # posts = Postcreated.objects.filter(user=request.user)
   # to see all the posts created:
-  posts = Postcreated.objects.all()
-  # loop X times, grab a random item and put that in the list, delete it from the old list (to show randomly)
+  posts = Postcreated.objects.order_by('?')
   return render(request, 'posts/index.html', { 'posts': posts })
 
 # show detail page (if not user's detail page, show readDetail)
