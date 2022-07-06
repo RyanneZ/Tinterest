@@ -3,7 +3,7 @@
 
 <div class="card">
   <div class="card-content">
-    <img class='cover'src="{{ post.image }}">
+    <img class='cover'src="{{ post.image.url }}">
     <h2>{{ post.title }}</h2>
     <br>
     <p>{{ post.description }}</p>
@@ -17,12 +17,9 @@
     <a href="{% url 'posts_delete' post.id %}" >Delete</a>
   </button>
   <button class="small-btn pink">
-    <a href="{% url 'posts_update' post.id %}" class="white-text ">Edit</a>
+    <a href="{% url 'edit_post' post.id %}" class="white-text ">Edit</a>
   </button>
 </div>
 
 
-
-<!-- <button>Delete</button>
-<button>Edit</button> -->
 {% endblock %}

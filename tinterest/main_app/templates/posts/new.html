@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="/posts_submit/" enctype="multipart/form-data">
+    {% csrf_token %}
+    Image: <input name="image" type="file">
+    <br>
+    Title: <input name="title">
+    Description: <input name="description">
+    Tags: <input name="tags">
+
+    <button type="submit">Add</button>
+</form>
+{% endblock %}
