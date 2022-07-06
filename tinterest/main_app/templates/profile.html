@@ -24,7 +24,7 @@
   <div class="col s12">
     <ul class="tabs">
       <li class="tab col s3"><a id="created-post-trigger" class="active" href="#test2">Created</a></li>
-      <li class="tab col s3"><a id="created-post-trigger" href="{% url 'profile_saved_posts' %}">Saved</a></li>
+      <li class="tab col s3"><a id="saved-post-trigger" href="">Saved</a></li>
     </ul>
   </div>
 </div>
@@ -38,7 +38,6 @@
     </div>
   {% endfor %}
 </div>
-{{savedposts}}
 <!-- added the posts saved below -->
 <div id= "saved-posts" class="post-container">
   {% for savedpost in savedposts %}

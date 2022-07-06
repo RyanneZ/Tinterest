@@ -59,20 +59,14 @@ def signup(request):
 @login_required
 def showProfile(request):
   posts = Postcreated.objects.filter(user=request.user.id)
-  print(posts)
+  
   savedposts = Savedpost.objects.filter(user = request.user)
   # print(savedposts.post)
   # iterate over savedposts grab the post.img and put that into a new list
   return render(request,'profile.html', {'posts': posts, 'savedposts': savedposts}) 
 
-@login_required
-def showProfile_saved_posts(request):
-  savedposts = Savedpost.objects.filter(user= request.user)
-  print(savedposts)
-  
 
-  return render(request,'profile-saved-posts.html', {'savedposts': savedposts}) 
-  
+
 # show public user page
 @login_required
 def show_public_profile(request, user_id):
