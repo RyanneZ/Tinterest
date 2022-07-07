@@ -4,6 +4,7 @@
 <br>
 <div style="display: flex; justify-content: center;" >
   <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
+
 </div>
 
 <h5 class="center-align">{{ user.username }}</h5>
@@ -15,6 +16,7 @@
       <div class="post-item">
         <a href="{% url 'detail' post.id %}">
           <img id="post-img" class='cover'src="{{ post.image.url }}">
+          
         </a>
       </div>
     {% endfor %}

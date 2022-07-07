@@ -1,17 +1,25 @@
+
+
 {% extends 'base.html' %}
 {% block content %}
 
+
+{% load static %}
 <h6 class="center-align">Profile</h6>
 <br>
 <div style="display: flex; justify-content: center;" >
-  <img class="circle" width='25%'  src="">
+  {% if user.profile.image.url != default.jpg%}
+    <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
+  {% else %}
+    <img class="circle" width='25%'  src="{% static 'img/default_photo.jpeg' %}">
+  {% endif %}
 </div>
 
 <h5 class="center-align">{{ user.username }}</h5>
 <p class="text-secondary center-align">{{ user.profile.about}}</p>
 <p class="text-secondary center-align"><a href="{{ user.profile.website }}" target="_blank">{{ user.profile.website }}</a></p>
 <div style="display: flex; justify-content: center;" >
-  <a href="{% url 'edit_profile' %}" class="small-btn btn-pink">Edit Profile</a>
+  <a href="{% url 'edit_profile' user.id%}" class="small-btn btn-pink">Edit Profile</a>
 </div>
 
 <a href="{% url 'new_post' %}" class="right"><i class="material-icons">add</i></a>
