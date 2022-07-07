@@ -1,10 +1,18 @@
+
+
 {% extends 'base.html' %}
 {% block content %}
 
+
+{% load static %}
 <h6 class="center-align">Profile</h6>
 <br>
 <div style="display: flex; justify-content: center;" >
-  <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
+  {% if user.profile.image.url != default.jpg%}
+    <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
+  {% else %}
+    <img class="circle" width='25%'  src="{% static 'img/default_photo.jpeg' %}">
+  {% endif %}
 </div>
 
 <h5 class="center-align">{{ user.username }}</h5>
@@ -48,7 +56,7 @@
   {% for post in posts %}
     <div class="post-item">
       <a href="{% url 'detail' post.id %}">
-        <img id="post-img" class='cover'src="{{ post.image }}">
+        <img id="post-img" class='cover'src="{{ post.image.url }}">
       </a>
     </div>
   {% endfor %}
@@ -58,7 +66,7 @@
   {% for savedpost in savedposts %}
     <div class="post-item">
       <a href="{% url 'detail' savedpost.post.id %}">
-        <img id="post-img" class='cover'src="{{ savedpost.post.image}}">
+        <img id="post-img" class='cover'src="{{ savedpost.post.image.url}}">
       </a>
     </div>
   {% endfor %}

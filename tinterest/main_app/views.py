@@ -119,6 +119,7 @@ def profile_edit(request):
 @login_required
 def update_profile(request, user_id):
     user = User.objects.get(id=user_id)
+    user.image = request.FILES.get('photo')
     user.username = request.POST['username']
     user.profile.about = request.POST['about']
     user.profile.website = request.POST['website']

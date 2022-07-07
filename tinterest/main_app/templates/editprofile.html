@@ -9,8 +9,11 @@
 <!-- <h5 class="center-align">{{ user.username }}</h5>
 <p class="text-secondary center-align">{{ user.profile.about }}</p> -->
     <section class="">
-        <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data" >
             {% csrf_token %} 
+            <label for="image"></label>
+            <input id="boxBorder" type="file" name="photo" ></input>
+            <br>
             <label for="username">Username</label>
             <input id="boxBorder" type="text" name="username" placeholder="{{ user.username }}" value="{{ user.username }}"></input>
             <label for="about">About</label>
@@ -24,6 +27,7 @@
         </form>
     </section>
    
+ 
  
  
 {% endblock %}

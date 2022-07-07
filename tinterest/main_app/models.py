@@ -31,7 +31,7 @@ class Photo(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
     about = models.CharField(max_length=200)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField()
     website = models.URLField(max_length=250)
 
 
@@ -53,22 +53,6 @@ class Comments(models.Model):
   content = models.TextField(max_length=250)
   post = models.ForeignKey(Postcreated, on_delete=models.CASCADE)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-  
-
- 
-
-  
-
-
-
-
-
-
-
-
-
-
 
 
 class Savedpost(models.Model):

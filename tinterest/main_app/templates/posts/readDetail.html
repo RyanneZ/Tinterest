@@ -3,7 +3,7 @@
 
 <div class="card">
   <div class="card-content">
-    <img id="post-img" class='cover'src="{{ post.image }}">
+    <img id="post-img" class='cover'src="{{ post.image.url }}">
     <a href="{% url 'show_public_profile' post.user.id %}">{{ post.user }}</a>
 
     <h2>{{ post.title }}</h2>
