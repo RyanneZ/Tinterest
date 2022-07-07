@@ -58,3 +58,5 @@ class Comments(models.Model):
 class Savedpost(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     post = models.ForeignKey(Postcreated,on_delete=models.CASCADE) 
+    class Meta:
+        unique_together = ["user", "post"]

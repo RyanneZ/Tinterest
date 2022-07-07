@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from .views import EditProfileView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -11,8 +11,9 @@ urlpatterns = [
   
   #temperate profile url
   path('profile/', views.showProfile, name='profile'),
-  path('profile/edit/', views.profile_edit, name='edit_profile'),
-  path('profile/<int:user_id>/submit_update_form/', views.update_profile, name='update_profile'), # handle submission of edit form data
+  path('profile/<int:pk>/edit/', EditProfileView.as_view(), name='edit_profile'),
+  
+  # path('profile/<int:user_id>/submit_update_form/', views.update_profile, name='update_profile'), # handle submission of edit form data
   path('posts/new', views.new_post, name='new_post'),
   path('posts_submit/', views.posts_create),
   path('posts/', views.posts_index, name='index'),

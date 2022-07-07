@@ -22,7 +22,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
 from django.contrib import messages
-
+from django.db.models import Q
 
 
 
@@ -80,15 +80,7 @@ def show_public_profile(request, user_id):
   else:
    return render(request, 'public-user-profile.html', {'user': user, 'posts': posts})
 
-# show public user page
-# @login_required
-# def show_public_profile(request, user_id):
-#   print(user_id)
-#   print(request.user.id)
-#   if user_id == request.user.id:
-#     return redirect('/profile/')
-#   else: 
-#     return HttpResponse('here is public user profile')
+
 
 @login_required
 def show_public_profile(request, user_id):
@@ -102,31 +94,11 @@ def show_public_profile(request, user_id):
    return render(request, 'public-user-profile.html', {'user': user, 'posts': posts})
 
 
-
-
-
-
-#renders update profile page 
-@login_required
-def profile_edit(request):
-    print(request.user.id)
-    user = User.objects.get(id=request.user.id)
-    return render(request, 'editprofile.html', {'user': user
-    }) 
-
-
-# extended profile update 
-@login_required
-def update_profile(request, user_id):
-    user = User.objects.get(id=user_id)
-    user.image = request.FILES.get('photo')
-    user.username = request.POST['username']
-    user.profile.about = request.POST['about']
-    user.profile.website = request.POST['website']
-    # user.profile.image = request.POST['image']
-    user.save()
-    return redirect('/profile/')
-
+class EditProfileView(UpdateView):
+  model = Profile
+  template_name = 'editprofile.html'
+  success_url = '/profile/'
+  fields = ['image', 'about', 'website']
 
 
 
@@ -210,23 +182,18 @@ def search_posts(request):
   else:
     return render(request, 'search.html')
 
-
-
-
-
-
-
-
-
-
 # save post
 def save_post(request, post_id):
-  Savedpost.objects.create(
-    post = Postcreated.objects.get(id = post_id),
-    user = User.objects.get(id = request.user.id)
-  )
-  
+
+  try:
+    Savedpost.objects.create(
+      post = Postcreated.objects.get(id = post_id),
+      user = User.objects.get(id = request.user.id)
+    )
+  except:
+    pass
   return redirect('/profile/')
+  
 
 
 
