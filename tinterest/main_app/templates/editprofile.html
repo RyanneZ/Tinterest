@@ -6,24 +6,12 @@
 
 <h6 class="center-align">Edit Profile</h6>
     
-<!-- <h5 class="center-align">{{ user.username }}</h5>
-<p class="text-secondary center-align">{{ user.profile.about }}</p> -->
-    <section class="">
-        <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
-            {% csrf_token %} 
-            <label for="username">Username</label>
-            <input id="boxBorder" type="text" name="username" placeholder="{{ user.username }}" value="{{ user.username }}"></input>
-            <label for="about">About</label>
-            <textarea id="boxBorder" name="about" placeholder="{{ user.profile.about }}">{{ user.profile.about }}</textarea>
-            <label for="website">Website</label>
-            <input id="boxBorder" type="url" name="website" placeholder="{{ user.profile.website }}" value="{{ user.profile.website }}"></input>
-            <div class="btn-container right">
-                <a class="small-btn inactive" href="{% url 'profile' %}" >Back</a>
-                <button class="small-btn pink" type="submit">Submit</button>
-            </div>
-        </form>
-    </section>
    
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
  
  
 {% endblock %}
