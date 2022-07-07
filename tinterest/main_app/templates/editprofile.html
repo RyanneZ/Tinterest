@@ -16,7 +16,7 @@
             <label for="about">About</label>
             <textarea id="boxBorder" name="about" placeholder="{{ user.profile.about }}">{{ user.profile.about }}</textarea>
             <label for="website">Website</label>
-            <input id="boxBorder" type="text" name="website" placeholder="{{ user.profile.website }}" value="{{ user.profile.website }}"></input>
+            <input id="boxBorder" type="url" name="website" placeholder="{{ user.profile.website }}" value="{{ user.profile.website }}"></input>
             <div class="btn-container right">
                 <a class="small-btn inactive" href="{% url 'profile' %}" >Back</a>
                 <button class="small-btn pink" type="submit">Submit</button>
