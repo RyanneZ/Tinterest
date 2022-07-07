@@ -9,6 +9,7 @@ import boto3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .forms import ProfileForm, UserForm, PostcreatedForm
 
 #Profile
 
@@ -107,45 +108,6 @@ def update_profile(request, user_id):
 
 
 
-class PostcreatedCreate(LoginRequiredMixin, CreateView):
-  model = Postcreated
-  fields = '__all__'
-  success_url = '/profile'
-  def __str__(self):
-    return self.title
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
-
-  
-    
- 
-#amazon photo uplode:
-S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
-BUCKET = 'catcollector-tatyana-1984'
-
-@login_required
-def add_photo(request):
-  photo_file = request.FILES.get('photo-file', None)
-  if photo_file:
-    #store the file in s3
-    filename = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-    try:
-     s3 = boto3.client('s3')
-     s3.upload_fileobj(photo_file, BUCKET, filename)
-    #create a DB entry in photo table with url
-     url = f"{S3_BASE_URL}{BUCKET}/{filename}"
-     Photo.objects.create(url=url)
-     return redirect('/profile')
-    except: 
-      return HttpResponse("something went wrong with uploading to amazon s3")
-  else:
-    return HttpResponse("no photos were received")
-
-# @login_required
-# def posts_index(request):
-#   posts = Postcreated.objects.filter(user=request.user)
-#   return render(request, 'posts/index.html', { 'posts': posts })
 
 @login_required
 def posts_index(request):
@@ -162,16 +124,34 @@ def posts_detail(request, post_id):
 
 
 
-class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
-  model = Postcreated
-  # Let's disallow the renaming of a cat by excluding the name field!
-  fields = '__all__'
   
 class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
   success_url = '/posts/'
 
 
+def new_post(request):
+  return render(request, 'posts/new.html', {})
+
+def posts_create(request):
+  post = Postcreated.objects.create(
+    image=request.FILES.get('image',None),
+    title=request.POST['title'],
+    description=request.POST['description'],
+    tags=request.POST['tags'],
+    user = request.user,
+    
+  )
+  return redirect(f'/posts/{post.id}/')
+
+def posts_edit(request, post_id):
+
+  post = Postcreated.objects.get(id=post_id)
+  form = PostcreatedForm(request.POST or None, request.FILES or None, instance = post)
+  if form.is_valid():
+    form.save()
+    return redirect(f'/posts/{post.id}/')
+  return render(request, 'posts/edit.html', {'post': post, 'form': form})
 
 
 @login_required
@@ -191,6 +171,15 @@ def comments_delete(request, comment_id, post_id):
   post = Postcreated.objects.get(id = post_id),
   Comments.objects.get(id=comment_id).delete()
   return redirect(f'/posts/{post_id}/')
+
+
+def search_posts(request):
+  if request.method == 'POST':
+    searched = request.POST['searched']
+    posts = Postcreated.objects.filter(title__contains=searched,tags__contains=searched)
+    return render(request, 'search.html', {'searched': searched, 'posts': posts})
+  else:
+    return render(request, 'search.html')
 
 
 
