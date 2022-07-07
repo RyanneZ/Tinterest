@@ -9,10 +9,19 @@
 <p class="text-secondary center-align">{{ user.profile.about }}</p>
     <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
+        <label for="username">Username</label><br>
+       <input type="text" name="username" placeholder="{{ user.username }}" value="{{ user.username }}"></input>
+       <br>
+       <label for="about">About</label><br>
+       <textarea name="about" placeholder="{{ user.profile.about }}">{{ user.profile.about }}</textarea>
+       <br>
+       <label for="website">Website</label><br>
+       <input type="text" name="website" placeholder="{{ user.profile.website }}" value="{{ user.profile.website }}"></input>
+       <br>
 
-                <button type="submit">Submit</button>
+      
+       <button type="submit">Submit</button>
+       
     </form>
    
  
@@ -25,14 +34,7 @@
 
 
 
-  <!-- Leaving the action empty makes the form post to the same url used to display it -->
-  <!-- <form action="" method="POST">
-    {% csrf_token %}
-    <table>
-    {{ form.as_table }}
-</table>
-    <input type="submit" value="Submit!" class="btn">
-</form> -->
+
 
 
 

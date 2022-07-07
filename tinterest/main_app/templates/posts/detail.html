@@ -21,5 +21,35 @@
   </button>
 </div>
 
+<h4>Comments:</h4>
+<form method="POST" action="{% url 'comments_create' post.id %}">
+  {% csrf_token %}
+  <label for="comment">Comment:</label><br>
+  <input type="text" name="content"></input>
+  <button type="submit">Submit</button>
+ </form>
+
+ <div>
+  {% for comment in comments %}
+    {% if comment.user.id == request.user.id %} 
+    <p><a href="{% url 'show_public_profile' comment.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    <form method="POST" action="{% url 'comments_delete' post.id comment.id %}">
+      {% csrf_token %}
+      <label for="delete">Delete comment:</label>
+      <button type="submit">Delete</button>
+     </form>
+    {% else %}
+    <p><a href="{% url 'show_public_profile' comment.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+<!-- {% if comment.user.id == request.user.id %} 
+{% else %}
+{% endif %} -->
+
+
+
 
 {% endblock %}
