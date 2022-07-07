@@ -138,3 +138,6 @@ AUTH_PASSWORD_VALIDATORS = []
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'catcollector-tatyana-1984'
 AWS_QUERYSTRING_AUTH = False
+
+import django_heroku
+django_heroku.settings(locals())
