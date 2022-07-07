@@ -6,22 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-
-
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+ 
   <title>Tinterest</title>
 </head>
 <body>
   <nav class="nav-wraper white">
     <div class="container">
-      <a href="/" class="brand-logo"><img src="{% static 'img/tinterestLogo.png' %}" alt=""></a>
+      <a href="/" class="brand-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
       <a href="#" class="sidenav-trigger right pink-text" data-target="mobile-links">
         <i class="material-icons ">menu</i>
       </a>
@@ -40,7 +40,7 @@
     </div>
   </nav>
   
-  <ul class="sidenav pink" id="mobile-links">
+  <ul class="sidenav pink padded" id="mobile-links">
     {% if user.is_authenticated %} 
     
     <li ><a href="#" class="white-text"><i class="material-icons white-text">home</i>Home</a></li>
@@ -55,7 +55,7 @@
   </ul>
   
   
-  <main class="container">
+  <main class="container content">
     {% block content %}
     {% endblock %}
   </main>
@@ -71,6 +71,10 @@
       $('datepicker').pickadate()
       $('timepicker').pickatime()
     })
+    $(document).ready(function(){
+    $('.tabs').tabs();
+  });
+  
   </script>
   
 </body>

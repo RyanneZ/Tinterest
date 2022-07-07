@@ -3,17 +3,26 @@
 
 {% block content %}
 
-  
-    <h4>Edit Profile</h4>
-    <h5 class="center-align">{{ user.username }}</h5>
-<p class="text-secondary center-align">{{ user.profile.about }}</p>
-    <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
 
-                <button type="submit">Submit</button>
-    </form>
+<h6 class="center-align">Edit Profile</h6>
+    
+<!-- <h5 class="center-align">{{ user.username }}</h5>
+<p class="text-secondary center-align">{{ user.profile.about }}</p> -->
+    <section class="">
+        <form method="POST" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <label for="username">Username</label>
+            <input id="boxBorder" type="text" name="username" placeholder="{{ user.username }}" value="{{ user.username }}"></input>
+            <label for="about">About</label>
+            <textarea id="boxBorder" name="about" placeholder="{{ user.profile.about }}">{{ user.profile.about }}</textarea>
+            <label for="website">Website</label>
+            <input id="boxBorder" type="text" name="website" placeholder="{{ user.profile.website }}" value="{{ user.profile.website }}"></input>
+            <div class="btn-container right">
+                <a class="small-btn inactive" href="{% url 'profile' %}" >Back</a>
+                <button class="small-btn pink" type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
    
  
  
@@ -25,14 +34,7 @@
 
 
 
-  <!-- Leaving the action empty makes the form post to the same url used to display it -->
-  <!-- <form action="" method="POST">
-    {% csrf_token %}
-    <table>
-    {{ form.as_table }}
-</table>
-    <input type="submit" value="Submit!" class="btn">
-</form> -->
+
 
 
 

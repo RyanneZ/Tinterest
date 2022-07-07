@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- <h5 class="center-align">Profile</h5> -->
+<h6 class="center-align">Profile</h6>
 <br>
 <div style="display: flex; justify-content: center;" >
   <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
@@ -11,9 +11,11 @@
 <p class="text-secondary center-align">{{ user.profile.about}}</p>
 <p class="text-secondary center-align"><a href="{{ user.profile.website }}" target="_blank">{{ user.profile.website }}</a></p>
 <div style="display: flex; justify-content: center;" >
-  <a href="{% url 'edit_profile' %}" class="waves-effect waves-light btn-small pink">Edit Profile</a>
+  <a href="{% url 'edit_profile' %}" class="small-btn btn-pink">Edit Profile</a>
 </div>
 
+<a href="{% url 'new_post' %}" class="right"><i class="material-icons">add</i></a>
+<!-- <div class="category-btns">
 <!-- Search bar -->
 <nav style="width: 300px; height: 40px">
   <div class="nav-wrapper white ">
@@ -30,17 +32,33 @@
 </nav>
 
 
-<a href="{% url 'new_post' %}" class="right"><i class="material-icons pink-text">add</i></a>
-<div class="category-btns">
-  <a id="created-btn" class="category-button" href="">Created</a>
-  <a id="saved-btn" class="category-button active" href="">Saved</a>
+
+
+<!-- putting tabs instead of category btns -->
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a id="created-post-trigger" class="active" href="#test2">Created</a></li>
+      <li class="tab col s3"><a id="saved-post-trigger" href="test3">Saved</a></li>
+    </ul>
+  </div>
 </div>
 <!-- added the posts created below -->
-<div class="post-container">
+<div id= "created-posts" class="post-container">
   {% for post in posts %}
     <div class="post-item">
       <a href="{% url 'detail' post.id %}">
-        <img class='cover'src="{{ post.image.url }}">
+        <img id="post-img" class='cover'src="{{ post.image }}">
+      </a>
+    </div>
+  {% endfor %}
+</div>
+<!-- added the posts saved below -->
+<div id= "saved-posts" class="post-container">
+  {% for savedpost in savedposts %}
+    <div class="post-item">
+      <a href="{% url 'detail' savedpost.post.id %}">
+        <img id="post-img" class='cover'src="{{ savedpost.post.image}}">
       </a>
     </div>
   {% endfor %}
