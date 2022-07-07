@@ -4,14 +4,15 @@ from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from platformdirs import user_cache_dir, user_log_dir
-from .models import Postcreated, Photo, Savedpost
+
+
+from .models import Postcreated, Photo, Comments, User, Savedpost
 import uuid
 import boto3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-# from .forms import ProfileForm, UserForm
+from .forms import ProfileForm, UserForm, PostcreatedForm
 
 #Profile
 
@@ -79,6 +80,31 @@ def show_public_profile(request, user_id):
   else:
    return render(request, 'public-user-profile.html', {'user': user, 'posts': posts})
 
+# show public user page
+# @login_required
+# def show_public_profile(request, user_id):
+#   print(user_id)
+#   print(request.user.id)
+#   if user_id == request.user.id:
+#     return redirect('/profile/')
+#   else: 
+#     return HttpResponse('here is public user profile')
+
+@login_required
+def show_public_profile(request, user_id):
+  print(user_id)
+  print(request.user.id)
+  user = User.objects.get(id=user_id)
+  posts = Postcreated.objects.filter(user=user_id)
+  if user_id == request.user.id:
+    return redirect('/profile/')
+  else:
+   return render(request, 'public-user-profile.html', {'user': user, 'posts': posts})
+
+
+
+
+
 
 #renders update profile page 
 @login_required
@@ -103,42 +129,6 @@ def update_profile(request, user_id):
 
 
 
-class PostcreatedCreate(LoginRequiredMixin, CreateView):
-  model = Postcreated
-  fields = '__all__'
-  success_url = '/profile'
-  def __str__(self):
-    return self.title
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
-
-  
-    
- 
-#amazon photo uplode:
-S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
-BUCKET = 'catcollector-tatyana-1984'
-
-@login_required
-def add_photo(request):
-  photo_file = request.FILES.get('photo-file', None)
-  if photo_file:
-    #store the file in s3
-    filename = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-    try:
-     s3 = boto3.client('s3')
-     s3.upload_fileobj(photo_file, BUCKET, filename)
-    #create a DB entry in photo table with url
-     url = f"{S3_BASE_URL}{BUCKET}/{filename}"
-     Photo.objects.create(url=url)
-     return redirect('/profile')
-    except: 
-      return HttpResponse("something went wrong with uploading to amazon s3")
-  else:
-    return HttpResponse("no photos were received")
-
-# this will be the home feed
 @login_required
 def posts_index(request):
   # posts = Postcreated.objects.filter(user=request.user)
@@ -149,25 +139,81 @@ def posts_index(request):
 # show detail page (if not user's detail page, show readDetail)
 @login_required
 def posts_detail(request, post_id):
+  comments = Comments.objects.filter(post = post_id)
   post = Postcreated.objects.get(id = post_id)
 # if user id = logged in user show detail page with "edit btn", if not show detail page with "save btn"
   if request.user == post.user:
     print(request.user)
-    return render(request, 'posts/detail.html', {'post': post} )
+    return render(request, 'posts/detail.html', {'post': post, 'comments': comments} )
   else:
-    return render(request, 'posts/readDetail.html', {'post': post} )
+    return render(request, 'posts/readDetail.html', {'post': post, 'comments': comments})
+
+ 
 
 
 
-
-class PostcreatedUpdate(LoginRequiredMixin, UpdateView):
-  model = Postcreated
-  # Let's disallow the renaming of a cat by excluding the name field!
-  fields = '__all__'
   
 class PostcreatedDelete(LoginRequiredMixin, DeleteView):
   model = Postcreated
   success_url = '/posts/'
+
+
+def new_post(request):
+  return render(request, 'posts/new.html', {})
+
+def posts_create(request):
+  post = Postcreated.objects.create(
+    image=request.FILES.get('image',None),
+    title=request.POST['title'],
+    description=request.POST['description'],
+    tags=request.POST['tags'],
+    user = request.user,
+    
+  )
+  return redirect(f'/posts/{post.id}/')
+
+def posts_edit(request, post_id):
+
+  post = Postcreated.objects.get(id=post_id)
+  form = PostcreatedForm(request.POST or None, request.FILES or None, instance = post)
+  if form.is_valid():
+    form.save()
+    return redirect(f'/posts/{post.id}/')
+  return render(request, 'posts/edit.html', {'post': post, 'form': form})
+
+
+@login_required
+def comments_create(request, post_id):
+
+  Comments.objects.create(
+    content = request.POST['content'],
+    post = Postcreated.objects.get(id = post_id),
+    user = User.objects.get(id = request.user.id)
+  )
+
+  return redirect(f'/posts/{post_id}/')
+
+
+@login_required
+def comments_delete(request, comment_id, post_id):
+  post = Postcreated.objects.get(id = post_id),
+  Comments.objects.get(id=comment_id).delete()
+  return redirect(f'/posts/{post_id}/')
+
+
+def search_posts(request):
+  if request.method == 'POST':
+    searched = request.POST['searched']
+    posts = Postcreated.objects.filter(title__contains=searched,tags__contains=searched)
+    return render(request, 'search.html', {'searched': searched, 'posts': posts})
+  else:
+    return render(request, 'search.html')
+
+
+
+
+
+
 
 
 

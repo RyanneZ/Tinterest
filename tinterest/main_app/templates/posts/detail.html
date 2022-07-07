@@ -3,7 +3,7 @@
 
 <div class="card">
   <div class="card-content">
-    <img id="post-img" class='cover'src="{{ post.image }}">
+    <img id="post-img" class='cover'src="{{ post.image.url }}">
     <a href="{% url 'show_public_profile' post.user.id %}">{{ post.user }}</a>
     <h2>{{ post.title }}</h2>
     <br>
@@ -19,12 +19,39 @@
     <a href="{% url 'posts_delete' post.id %}" >Delete</a>
   </button>
   <button class="small-btn pink">
-    <a href="{% url 'posts_update' post.id %}">Edit</a>
+    <a href="{% url 'edit_post' post.id %}">Edit</a>
   </button>
 </div>
 
+<h4>Comments:</h4>
+<form method="POST" action="{% url 'comments_create' post.id %}">
+  {% csrf_token %}
+  <label for="comment">Comment:</label><br>
+  <input type="text" name="content"></input>
+  <button type="submit">Submit</button>
+ </form>
+
+ <div>
+  {% for comment in comments %}
+    {% if comment.user.id == request.user.id %} 
+    <p><a href="{% url 'show_public_profile' comment.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    <form method="POST" action="{% url 'comments_delete' post.id comment.id %}">
+      {% csrf_token %}
+      <label for="delete">Delete comment:</label>
+      <button type="submit">Delete</button>
+     </form>
+    {% else %}
+    <p><a href="{% url 'show_public_profile' comment.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    {% endif %}
+  {% endfor %}
+</div>
 
 
-<!-- <button>Delete</button>
-<button>Edit</button> -->
+<!-- {% if comment.user.id == request.user.id %} 
+{% else %}
+{% endif %} -->
+
+
+
+
 {% endblock %}
