@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h6 class="center-align">Home Feed / title to remove</h6>
+
+
 <nav style="width: 80%; height: 40px">
   <div class="nav-wrapper white ">
     <form method="POST" action="{% url 'search_posts' %}">
@@ -8,14 +11,12 @@
       <div class="input-field ">
         <input id="search" type="search" required name="searched">
         <label class="label-icon " for="search"><i class="material-icons pink-text ">search</i></label>
-        <!-- <i class="material-icons pink-text ">close</i> -->
         <button type="submit" >Search</button>
       </div>
     </form>
   </div>
 </nav>
 <br><br>
-<h5>Posts Created</h5>
 
 <div class="post-container">
   {% for post in posts %}
