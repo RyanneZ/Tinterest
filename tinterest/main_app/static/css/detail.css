@@ -1,9 +1,13 @@
 /* profile info on detail */
 .profile-link {
   display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
 }
 
-.profile-img-container-detail {
+.profile-link-img {
   display: flex;
   justify-content: center;
   width: 50px;
