@@ -3,47 +3,42 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
 {% load static %}
-<h6 class="center-align">Profile</h6>
-<br>
-<div class="profile-img-container">
-  {% if user.profile.image.url != default.jpg%}
-    <img  src="{{ user.profile.image.url }}">
-  {% else %}
-    <img   src="{% static 'img/default_photo.jpeg' %}">
-  {% endif %}
-</div>
 
-<h5 class="center-align">{{ user.username }}</h5>
-<p class="text-secondary center-align">{{ user.profile.about}}</p>
-<p class="text-secondary center-align"><a href="{{ user.profile.website }}" target="_blank">{{ user.profile.website }}</a></p>
-<div style="display: flex; justify-content: center;" >
-  <a href="{% url 'edit_profile' user.id%}" class="small-btn btn-pink">Edit Profile</a>
-</div>
+  <h6 class="page-title center-align">Profile</h6>
+  <div class="profile-img-container">
+    {% if user.profile.image.url != default.jpg%}
+      <img class="profile-img"  src="{{ user.profile.image.url }}">
+    {% else %}
+      <img class="profile-img"   src="{% static 'img/default_photo.jpeg' %}">
+    {% endif %}
+  </div>
+  
+  <div class="wrap-profile">
+    <h5 id="username">{{ user.username }}</h5>
+    <p>{{ user.profile.about}}</p>
+    <p><a href="{{ user.profile.website }}" target="_blank">{{ user.profile.website }}</a></p>
+    <a href="{% url 'edit_profile' user.id%}" class="small-btn btn-pink">Edit Profile</a>
+  </div>
 
-<a href="{% url 'new_post' %}" class="right"><i class="material-icons">add</i></a>
-<!-- <div class="category-btns">
+
 <!-- Search bar -->
-<nav style="width: 300px; height: 40px">
-  <div class="nav-wrapper white ">
+  <div class="search-add-post">
     <form method="POST" action="{% url 'search_posts' %}">
       {% csrf_token %}
-      <div class="input-field ">
+      
         <input id="search" type="search" required name="searched">
-        <label class="label-icon " for="search"><i class="material-icons pink-text ">search</i></label>
-        <!-- <i class="material-icons pink-text ">close</i> -->
-        <button type="submit">Search</button>
-      </div>
+        <!-- <label class="label-icon " for="search"><i class="material-icons pink-text ">search</i></label> -->
+        <button class="search-btn" type="submit"><img src="{% static 'img/search.png' %}" alt=""></button>
+      
     </form>
+    <a  class="add-post" href="{% url 'new_post' %}"><img src="{% static 'img/add.png' %}" alt=""></a>
   </div>
-</nav>
-
-
 
 
 <!-- putting tabs instead of category btns -->
-<div class="row">
+<!-- tabs for mobile & tablet -->
+<div id= "mobile-tabs" class="row">
   <div class="col s12">
     <ul class="tabs">
       <li class="tab col s3"><a id="created-post-trigger" class="active" href="#test2">Created</a></li>
@@ -51,6 +46,15 @@
     </ul>
   </div>
 </div>
+<!-- tabs for 1024px & up -->
+<!-- <div id= "desktop-tabs" class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6"><a id="created-post-trigger" class="active" href="#test2">Created</a></li>
+      <li class="tab col s6"><a id="saved-post-trigger" href="test3">Saved</a></li>
+    </ul>
+  </div>
+</div> -->
 <!-- added the posts created below -->
 <div id= "created-posts" class="post-container">
   {% for post in posts %}

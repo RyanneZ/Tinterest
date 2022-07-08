@@ -13,7 +13,7 @@ a {
   color: inherit;
 }
 img {
-  /* max-width: 100%; */
+  max-width: 100%;
   display: block;
 }
 body {
@@ -26,9 +26,9 @@ h1,h2,h3,h4, h5, h6 {
   font-family: 'Inter', sans-serif;
   font-weight:700;
 }
-h5 {
+/* h5 {
   margin: 24px 0;
-}
+} */
 
 nav {
   -webkit-box-shadow: none !important; 
@@ -68,9 +68,9 @@ nav {
   padding: 18px 16px;
 }
 /* content specific styling */
-.content {
-  padding-top: 40px;
-}
+/* .content {
+  padding-top: 24px;
+} */
 /* form styles */
 .wrap-form {
   display: flex;
@@ -101,24 +101,12 @@ margin-top: 8px;
   margin-top: 270px;
 }
 
-#boxBorder {
-  border: 1px solid #D9D9D9;
-margin-top: 8px;
+form input, #boxBorder {
+ border: 1px solid #D9D9D9;
+ margin-top: 8px;
 }
 
-/* profile specific styling */
-#saved-posts {
-  display: none;
-}
-.profile-img-container {
-  display: flex;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: 0 auto;
-  overflow: hidden;
-}
+
 /* responsiveness */
 
 @media screen and (min-width: 768px) {
@@ -126,5 +114,21 @@ margin-top: 8px;
   #post-img {
     width: 100%;
   }
- 
+  nav .brand-logo {
+    top: 1.5rem !important;
+  }
+  .navbar {
+    gap: 420px;
+  }
+  .search-add-post {
+    justify-content: space-between;
+  }
+  .search-add-post form {
+    width: 95%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  nav .brand-logo {
+    left: 15% !important;
+  }
 }

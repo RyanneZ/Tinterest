@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h6 class="center-align">Home Feed / title to remove</h6>
+{% load static %}
+
+<h6 class="center-align">Home</h6>
+
+<!-- search bar -->
+    <div class="search-add-post">
+      <form id="search-add-post-home" method="POST" action="{% url 'search_posts' %}">
+        {% csrf_token %}
+       
+          <input id="home-search"  type="search" required name="searched">
+          <!-- <label class="label-icon " for="search"><i class="material-icons pink-text ">search</i></label> -->
+          <button id="home-search-button" type="submit"><i id="home-search-icon" class="material-icons pink-text ">search</i></button> 
+      </form>
+    </div>
+  
 
 
-<nav style="width: 80%; height: 40px">
-  <div class="nav-wrapper white ">
-    <form method="POST" action="{% url 'search_posts' %}">
-      {% csrf_token %}
-      <div class="input-field ">
-        <input id="search" type="search" required name="searched">
-        <label class="label-icon " for="search"><i class="material-icons pink-text ">search</i></label>
-        <button type="submit" >Search</button>
-      </div>
-    </form>
-  </div>
-</nav>
-<br><br>
 
 <div class="post-container">
   {% for post in posts %}

@@ -12,7 +12,7 @@
       <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
       <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}" />
-    <title>Welcome to Tinterest</title>
+    <title>Tinterest Login</title>
   </head>
   <body>
     <section class="container">
@@ -27,6 +27,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" class="btn btn-pink lowered" value="login">
+            
             <input type="hidden" name="next" value="{{ next }}">
         </form>
       </div>
