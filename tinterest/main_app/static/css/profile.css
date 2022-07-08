@@ -1,0 +1,64 @@
+/* profile specific styling */
+#saved-posts {
+  display: none;
+}
+.add-post {
+  /* margin-top: 20px; */
+  margin-left: 44px;
+}
+.profile-img-container {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.profile-img {
+  max-width: 200%;
+}
+.wrap-profile  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.page-title {
+  margin-bottom: 24px;
+}
+#username {
+  margin-top: 24px;
+}
+.wrap-profile p {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+#search {
+  border-radius: 20px;
+  background-color: #F3EEEF;
+  border-bottom: none;
+  padding: 0 12px;
+  width: 100%;
+}
+.search-add-post, .search-add-post form {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+/* search icon */
+.input[type=search]+.label-icon {
+  left: 19rem;
+  top: -1rem;
+}
+/* created & saved tabs */
+.tabs, .tab, .tab a:hover, .tab .a, .tabs .tab a.active, #created-post-trigger, #saved-post-trigger {
+  color: #BB3B80 !important;
+  background-color: white !important;
+}
+.tabs .indicator {
+  background-color: #BB3B80 !important;
+}
