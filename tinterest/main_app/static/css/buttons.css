@@ -33,6 +33,11 @@
   border: none;
   cursor: pointer;
 }
+#comment-delete-btn {
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
 .inactive {
   background-color: #F3EEEF;
   color: #212121;

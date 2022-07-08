@@ -28,25 +28,33 @@
   </button>
 </div>
 
-<h4>Comments:</h4>
-<form method="POST" action="{% url 'comments_create' post.id %}">
-  {% csrf_token %}
-  <label for="comment">Comment:</label><br>
-  <input type="text" name="content"></input>
-  <button type="submit">Submit</button>
- </form>
+<section class="comment-submission">
+  <!-- <h4>Comments:</h4> -->
 
- <div>
+
+
+  <form method="POST" action="{% url 'comments_create' post.id %}">
+    {% csrf_token %}
+    <label for="comment">Comment:</label><br>
+    <input type="text" name="content"></input>
+    <button class= "small-btn pink" type="submit">Submit</button>
+   </form>
+</section>
+
+ <div class="user-comment-group">
   {% for comment in comments %}
     {% if comment.user.id == request.user.id %} 
-    <p><a href="{% url 'show_public_profile' comment.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    <div class="user-comment-id">
+      <a href="{% url 'show_public_profile' comment.user.id %}"><h6>{{ comment.user}}</h6></a>
+      <p>{{comment.content}}</p>
+    </div>
     <form method="POST" action="{% url 'comments_delete' post.id comment.id %}">
       {% csrf_token %}
-      <label for="delete">Delete comment:</label>
-      <button type="submit">Delete</button>
+      <button  id="comment-delete-btn" type="submit"><i class="material-icons">delete</i></button>
      </form>
     {% else %}
-    <p><a href="{% url 'show_public_profile' comment.user.id %}">{{ comment.user}}</a>{{ comment.content }}</p>
+    <a href="{% url 'show_public_profile' comment.user.id %}"><h6>{{ comment.user}}</h6></a>
+    <p>{{comment.content}}</p>
     {% endif %}
   {% endfor %}
 </div>
