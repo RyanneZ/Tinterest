@@ -110,6 +110,9 @@ margin-top: 8px;
 #saved-posts {
   display: none;
 }
+.add-post {
+  margin-top: 20px;
+}
 .profile-img-container {
   display: flex;
   justify-content: center;
@@ -134,6 +137,18 @@ margin-top: 8px;
 .wrap-profile p {
   margin-top: 0;
   margin-bottom: 8px;
+}
+#search {
+  border-radius: 20px;
+  background-color: #F3EEEF;
+  border-bottom: none;
+  padding: 0 12px;
+  width: 80%;
+}
+/* search icon */
+.input-field input[type=search]+.label-icon {
+  left: 19rem;
+  top: -1rem;
 }
 /* responsiveness */
 
