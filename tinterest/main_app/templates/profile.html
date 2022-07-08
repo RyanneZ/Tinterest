@@ -7,11 +7,11 @@
 {% load static %}
 <h6 class="center-align">Profile</h6>
 <br>
-<div style="display: flex; justify-content: center;" >
+<div class="profile-img-container">
   {% if user.profile.image.url != default.jpg%}
-    <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
+    <img  src="{{ user.profile.image.url }}">
   {% else %}
-    <img class="circle" width='25%'  src="{% static 'img/default_photo.jpeg' %}">
+    <img   src="{% static 'img/default_photo.jpeg' %}">
   {% endif %}
 </div>
 
