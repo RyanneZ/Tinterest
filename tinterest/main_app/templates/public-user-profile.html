@@ -1,27 +1,74 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
-<br>
-<div style="display: flex; justify-content: center;" >
-  <img class="circle" width='25%'  src="{{ user.profile.image.url }}">
-
+<h6 class="page-title center-align">Profile</h6>
+<div class="profile-img-container">
+  {% if user.profile.image.url != default.jpg%}
+    <img class="profile-img"  src="{{ user.profile.image.url }}">
+  {% else %}
+    <img class="profile-img"   src="{% static 'img/default_photo.jpeg' %}">
+  {% endif %}
 </div>
 
-<h5 class="center-align">{{ user.username }}</h5>
-<p class="text-secondary center-align">{{ user.profile.about }}</p>
-<p class="text-secondary center-align"><a href="{{ user.profile.website }}" target="_blank">{{ user.profile.website }}</a></p>
+<div class="wrap-profile">
+  <h5 id="username">{{ user.username }}</h5>
+  <p>{{ user.profile.about}}</p>
+  <p><a href="{{ user.profile.website }}" target="_blank">{{ user.profile.website }}</a></p>
+</div>
 
-<div class="post-container">
+
+<!-- search bar -->
+<div class="search-add-post">
+  <form id="search-add-post-home" method="POST" action="{% url 'search_posts' %}">
+    {% csrf_token %}
+   
+      <input id="home-search"  type="search" required name="searched">
+      <!-- <label class="label-icon " for="search"><i class="material-icons pink-text ">search</i></label> -->
+      <button id="home-search-button" type="submit"><i id="home-search-icon" class="material-icons pink-text ">search</i></button> 
+  </form>
+</div>
+
+<!-- putting tabs instead of category btns -->
+<!-- tabs for mobile & tablet -->
+<div id= "mobile-tabs" class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a id="created-post-trigger" class="active" href="#test2">Created</a></li>
+      <li class="tab col s3"><a id="saved-post-trigger" href="test3">Saved</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- tabs for 1024px & up -->
+<!-- <div id= "desktop-tabs" class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6"><a id="created-post-trigger" class="active" href="#test2">Created</a></li>
+      <li class="tab col s6"><a id="saved-post-trigger" href="test3">Saved</a></li>
+    </ul>
+  </div>
+</div> -->
+<!-- added the posts created below -->
+<div id= "created-posts" class="post-container">
     {% for post in posts %}
       <div class="post-item">
         <a href="{% url 'detail' post.id %}">
           <img id="post-img" class='cover'src="{{ post.image.url }}">
-          
         </a>
       </div>
     {% endfor %}
   </div>
-
+<!-- added the posts saved below -->
+<div id= "saved-posts" class="post-container">
+  {% for savedpost in savedposts %}
+    <div class="post-item">
+      <a href="{% url 'detail' savedpost.post.id %}">
+        <img id="post-img" class='cover'src="{{ savedpost.post.image.url }}">
+      </a>
+    </div>
+  {% endfor %}
+</div>
 
 
 {% endblock %}
