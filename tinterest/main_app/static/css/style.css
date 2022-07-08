@@ -26,9 +26,9 @@ h1,h2,h3,h4, h5, h6 {
   font-family: 'Inter', sans-serif;
   font-weight:700;
 }
-h5 {
+/* h5 {
   margin: 24px 0;
-}
+} */
 
 nav {
   -webkit-box-shadow: none !important; 
@@ -68,9 +68,9 @@ nav {
   padding: 18px 16px;
 }
 /* content specific styling */
-.content {
-  padding-top: 40px;
-}
+/* .content {
+  padding-top: 24px;
+} */
 /* form styles */
 .wrap-form {
   display: flex;
@@ -118,6 +118,22 @@ margin-top: 8px;
   border-radius: 50%;
   margin: 0 auto;
   overflow: hidden;
+}
+.wrap-profile  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.page-title {
+  margin-bottom: 24px;
+}
+#username {
+  margin-top: 24px;
+}
+.wrap-profile p {
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 /* responsiveness */
 
