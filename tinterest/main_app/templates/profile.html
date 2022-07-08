@@ -8,9 +8,9 @@
   <h6 class="page-title center-align">Profile</h6>
   <div class="profile-img-container">
     {% if user.profile.image.url != default.jpg%}
-      <img  src="{{ user.profile.image.url }}">
+      <img class="profile-img"  src="{{ user.profile.image.url }}">
     {% else %}
-      <img   src="{% static 'img/default_photo.jpeg' %}">
+      <img class="profile-img"   src="{% static 'img/default_photo.jpeg' %}">
     {% endif %}
   </div>
   
@@ -18,25 +18,24 @@
     <h5 id="username">{{ user.username }}</h5>
     <p>{{ user.profile.about}}</p>
     <p><a href="{{ user.profile.website }}" target="_blank">{{ user.profile.website }}</a></p>
-  </div>
-  <div style="display: flex; justify-content: center;" >
     <a href="{% url 'edit_profile' user.id%}" class="small-btn btn-pink">Edit Profile</a>
   </div>
 
 
-<a href="{% url 'new_post' %}" class="add-post right"><i class="material-icons">add</i></a>
+
+
 
 <!-- Search bar -->
-  <div>
+  <div class="search-add-post">
     <form method="POST" action="{% url 'search_posts' %}">
       {% csrf_token %}
-      <div class="input-field ">
+      
         <input id="search" type="search" required name="searched">
-        <label class="label-icon " for="search"><i class="material-icons pink-text ">search</i></label>
-        <!-- <i class="material-icons pink-text ">close</i> -->
-        <button type="submit">Search</button>
-      </div>
+        <!-- <label class="label-icon " for="search"><i class="material-icons pink-text ">search</i></label> -->
+        <button class="search-btn" type="submit"><img src="{% static 'img/search.png' %}" alt=""></button>
+      
     </form>
+    <a  class="add-post" href="{% url 'new_post' %}"><img src="{% static 'img/add.png' %}" alt=""></a>
   </div>
 
 

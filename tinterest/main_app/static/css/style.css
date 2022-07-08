@@ -13,7 +13,7 @@ a {
   color: inherit;
 }
 img {
-  /* max-width: 100%; */
+  max-width: 100%;
   display: block;
 }
 body {
@@ -102,8 +102,8 @@ margin-top: 8px;
 }
 
 #boxBorder {
-  border: 1px solid #D9D9D9;
-margin-top: 8px;
+ border: 1px solid #D9D9D9;
+ margin-top: 8px;
 }
 
 /* profile specific styling */
@@ -111,7 +111,8 @@ margin-top: 8px;
   display: none;
 }
 .add-post {
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  margin-left: 44px;
 }
 .profile-img-container {
   display: flex;
@@ -122,11 +123,15 @@ margin-top: 8px;
   margin: 0 auto;
   overflow: hidden;
 }
+.profile-img {
+  max-width: 200%;
+}
 .wrap-profile  {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-bottom: 16px;
 }
 .page-title {
   margin-bottom: 24px;
@@ -143,10 +148,17 @@ margin-top: 8px;
   background-color: #F3EEEF;
   border-bottom: none;
   padding: 0 12px;
-  width: 80%;
+  width: 100%;
 }
+.search-add-post, .search-add-post form {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
 /* search icon */
-.input-field input[type=search]+.label-icon {
+.input[type=search]+.label-icon {
   left: 19rem;
   top: -1rem;
 }
