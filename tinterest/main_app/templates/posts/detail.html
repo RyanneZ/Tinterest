@@ -30,9 +30,6 @@
 
 <section class="comment-submission">
   <!-- <h4>Comments:</h4> -->
-
-
-
   <form method="POST" action="{% url 'comments_create' post.id %}">
     {% csrf_token %}
     <label for="comment">Comment:</label><br>
@@ -53,8 +50,10 @@
       <button  id="comment-delete-btn" type="submit"><i class="material-icons">delete</i></button>
      </form>
     {% else %}
-    <a href="{% url 'show_public_profile' comment.user.id %}"><h6>{{ comment.user}}</h6></a>
-    <p>{{comment.content}}</p>
+    <div class="user-comment-id">
+      <a href="{% url 'show_public_profile' comment.user.id %}"><h6>{{ comment.user}}</h6></a>
+      <p>{{comment.content}}</p>
+    </div>
     {% endif %}
   {% endfor %}
 </div>
