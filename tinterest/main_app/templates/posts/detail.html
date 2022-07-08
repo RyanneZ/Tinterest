@@ -4,7 +4,12 @@
 <div class="card">
   <div class="card-content">
     <img id="post-img" class='cover'src="{{ post.image.url }}">
-    <a href="{% url 'show_public_profile' post.user.id %}">{{ post.user }}</a>
+    <div class="profile-link">
+      <div class="profile-img-container-detail">
+          <img class="profile-img"  src="{{ user.profile.image.url }}">
+      </div>
+      <a href="{% url 'show_public_profile' post.user.id %}"><h6>{{ post.user }}</h6></a>
+    </div>
     <h2>{{ post.title }}</h2>
     <br>
     <!-- <h4>{{user.name}}</h4> -->
