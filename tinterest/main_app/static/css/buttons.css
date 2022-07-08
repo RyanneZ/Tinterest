@@ -24,7 +24,7 @@
   color: #212121;
 } */
 /* small buttons */
-.small-btn {
+.small-btn, #file-upload-button  {
   font-family: 'Inter', sans-serif;
   color: white;
   border-radius: 100px;
