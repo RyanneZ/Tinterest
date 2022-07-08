@@ -114,5 +114,21 @@ margin-top: 8px;
   #post-img {
     width: 100%;
   }
- 
+  nav .brand-logo {
+    top: 1.5rem !important;
+  }
+  .navbar {
+    gap: 420px;
+  }
+  .search-add-post {
+    justify-content: space-between;
+  }
+  .search-add-post form {
+    width: 95%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  nav .brand-logo {
+    left: 15% !important;
+  }
 }

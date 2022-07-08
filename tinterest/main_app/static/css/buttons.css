@@ -102,13 +102,4 @@
   margin-top: 24px;
 }
 
-/* responsive */
-/* nav */
-@media screen and (min-width: 768px) {
-  nav .brand-logo {
-    top: 1.5rem !important;
-  }
-  .navbar {
-    gap: 420px;
-  }
-}
+/* responsiveness */
