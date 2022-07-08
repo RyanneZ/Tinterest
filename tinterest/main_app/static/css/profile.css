@@ -62,5 +62,29 @@
 .tabs .indicator {
   background-color: #BB3B80 !important;
 }
-
+#desktop-tabs {
+  display: none;
+}
 /* responsiveness */
+
+@media screen and (min-width: 768px) {
+  
+  .search-add-post {
+    justify-content: space-between;
+  }
+  .search-add-post form {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  nav .brand-logo {
+    left: 15% !important;
+  }
+  /* #desktop-tabs {
+    display: block;
+  } */
+  /* #mobile-tabs {
+    display: none;
+  } */
+}

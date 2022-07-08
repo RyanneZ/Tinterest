@@ -43,7 +43,8 @@
 
 
 <!-- putting tabs instead of category btns -->
-<div class="row">
+<!-- tabs for mobile & tablet -->
+<div id= "mobile-tabs" class="row">
   <div class="col s12">
     <ul class="tabs">
       <li class="tab col s3"><a id="created-post-trigger" class="active" href="#test2">Created</a></li>
@@ -51,6 +52,15 @@
     </ul>
   </div>
 </div>
+<!-- tabs for 1024px & up -->
+<!-- <div id= "desktop-tabs" class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6"><a id="created-post-trigger" class="active" href="#test2">Created</a></li>
+      <li class="tab col s6"><a id="saved-post-trigger" href="test3">Saved</a></li>
+    </ul>
+  </div>
+</div> -->
 <!-- added the posts created below -->
 <div id= "created-posts" class="post-container">
   {% for post in posts %}
