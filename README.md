@@ -46,6 +46,16 @@ Tinterest is an image sharing and social media service designed to enable saving
   </tr>
 </table>
 
+### Search Bar
+ <table>
+  <tr>
+    <td><img width="298" alt="image" src="https://user-images.githubusercontent.com/91228440/178108700-411f7669-a86a-4953-9187-8b6b4c5fe016.png">
+</td>
+    <td><img width="303" alt="image" src="https://user-images.githubusercontent.com/91228440/178108684-cd463a85-abda-4062-97a1-c9c68af236da.png">
+</td>
+  </tr>
+</table>
+
 
 
 
