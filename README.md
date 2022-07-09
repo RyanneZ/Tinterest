@@ -57,10 +57,17 @@ Tinterest is an image sharing and social media service designed to enable saving
 </table>
 
 ## Technologies Used:
-
+Python
+Django
+PostgreSQL
+RESTful APIs
+Amazon S3 - Cloud Object Storage
+JavaScript
+CSS(Materialize)
+HTML
 
 ## Getting Started: 
-
-A link to the deployed app (Heroku)
-A link to the Trello board used for the project's planning that includes user stories, wireframes & an ERD.
+Heroku: https://tinterest.herokuapp.com/
+Trello board: https://trello.com/b/PGiFA9T4/pinterest-clone-project-3
+Wireframes: https://www.figma.com/file/dgJasFdja07d3SGf21ZsXS/E-Commerce-Scribblings?node-id=486%3A57
 
