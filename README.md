@@ -67,7 +67,7 @@ Tinterest is an image sharing and social media service designed to enable saving
 - HTML
 
 ## Getting Started: 
-- Heroku: https://tinterest.herokuapp.com/
+- Heroku: https://tinterest.herokuapp.com/welcome/ 
 - Trello board: https://trello.com/b/PGiFA9T4/pinterest-clone-project-3
 - Wireframes: https://www.figma.com/file/dgJasFdja07d3SGf21ZsXS/E-Commerce-Scribblings?node-id=486%3A57
 
