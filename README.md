@@ -4,19 +4,22 @@
 
 Tinterest is an image sharing and social media service designed to enable saving and discovery of information (specifically "ideas") on the internet using images. As a user, you can make posts on the community board and share your posts with other users. You can also save the posts that you like.
 
-### Landing page
+### Landing Page
 <img width="301" alt="image" src="https://user-images.githubusercontent.com/91228440/178107347-5703abf2-7970-44e7-8f20-8492a7c73488.png">
 
-### Profile page after signup
+### Signup
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/91228440/178107417-a5a84000-0613-4271-ad10-0a125df39f37.png">
+
+### Profile 
 <table>
   <tr>
-    <td><img width="250" alt="image" src="https://user-images.githubusercontent.com/91228440/178106763-3bc8ba1f-f5df-4f55-a2da-05ef437b3475.png"></td>
-    <td><img width="245" alt="image" src="https://user-images.githubusercontent.com/91228440/178106957-aea2fac8-7cbb-408d-af13-329b340dae06.png"></td
+    <td><img width="301" alt="image" src="https://user-images.githubusercontent.com/91228440/178107458-adfe9b83-8014-416f-a361-dd0216a5f8fb.png"></td>
+    <td><img width="302" alt="image" src="https://user-images.githubusercontent.com/91228440/178107567-c83b423e-dff2-4ae7-a44a-e44938b52ce6.png"></td
   </tr>
 </table>
 
 ### Create a post
-<img width="211" alt="image" src="https://user-images.githubusercontent.com/91228440/178106919-82b3b0a5-ab2e-4866-a3c0-ff5ea9dcb3b3.png">
+
 
 
 
