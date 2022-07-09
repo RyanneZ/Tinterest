@@ -19,6 +19,14 @@ Tinterest is an image sharing and social media service designed to enable saving
 </table>
 
 ### Create a post
+  
+<table>
+  <tr>
+    <td><img width="298" alt="image" src="https://user-images.githubusercontent.com/91228440/178107751-8ca96bae-a523-48fd-98da-3c4a20e98934.png"></td>
+    <td><img width="302" alt="image" src="https://user-images.githubusercontent.com/91228440/178107774-df4e529a-3d31-4314-982d-88fca336f71a.png"></td>
+    <td><img width="298" alt="image" src="https://user-images.githubusercontent.com/91228440/178107803-0914629c-4a36-4f3f-8e89-169987f301ef.png"></td>
+  </tr>
+</table>
 
 
 
