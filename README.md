@@ -5,7 +5,7 @@
 Tinterest is an image sharing and social media service designed to enable saving and discovery of information (specifically "ideas") on the internet using images. As a user, you can make posts on the community board and share your posts with other users. You can also save the posts that you like.
 
 ### Landing page
-<img width="250" alt="image" src="https://user-images.githubusercontent.com/91228440/178106730-4a1649bc-74d7-4b46-9ab2-d9420d7bd95d.png">
+<img width="301" alt="image" src="https://user-images.githubusercontent.com/91228440/178107347-5703abf2-7970-44e7-8f20-8492a7c73488.png">
 
 ### Profile page after signup
 <table>
