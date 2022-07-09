@@ -9,6 +9,7 @@ Tinterest is an image sharing and social media service designed to enable saving
 
 ### Profile page after signup
 <img width="209" alt="image" src="https://user-images.githubusercontent.com/91228440/178106763-3bc8ba1f-f5df-4f55-a2da-05ef437b3475.png">
+<img width="206" alt="image" src="https://user-images.githubusercontent.com/91228440/178106957-aea2fac8-7cbb-408d-af13-329b340dae06.png">
 
 ### Create a post
 <img width="211" alt="image" src="https://user-images.githubusercontent.com/91228440/178106919-82b3b0a5-ab2e-4866-a3c0-ff5ea9dcb3b3.png">
