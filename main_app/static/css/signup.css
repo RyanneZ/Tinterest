@@ -53,7 +53,7 @@ that don't have container class */
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  
 }
 
 /* form styles */
@@ -74,9 +74,7 @@ form input {
 border: 1px solid #D9D9D9;
 margin-top: 8px;
 }
-.lowered {
-  margin-top: 270px;
-}
+
 
 /* responsive */
 @media screen and (min-width: 768px) {

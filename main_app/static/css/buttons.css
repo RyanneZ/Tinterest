@@ -24,7 +24,7 @@
   color: #212121;
 } */
 /* small buttons */
-.small-btn {
+.small-btn, #file-upload-button  {
   font-family: 'Inter', sans-serif;
   color: white;
   border-radius: 100px;
@@ -33,11 +33,29 @@
   border: none;
   cursor: pointer;
 }
+#comment-delete-btn {
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
 .inactive {
   background-color: #F3EEEF;
   color: #212121;
   margin-right: 8px;
 }
+.search-btn {
+  font-family: 'Inter', sans-serif;
+  color: #212121;
+  background-color: white;
+  border-radius: 100px;
+  padding: 11px 13px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
 /* container for created & saved btns on profile */
 .category-btns {
   margin: 0 auto;
@@ -85,17 +103,8 @@
   font-size: 14px;
 } */
 /* container for 2 cta btns side by side */
-.btn-container {
+.btn-container, .back {
   margin-top: 24px;
 }
 
-/* responsive */
-/* nav */
-@media screen and (min-width: 768px) {
-  nav .brand-logo {
-    top: 1.5rem !important;
-  }
-  .navbar {
-    gap: 420px;
-  }
-}
+/* responsiveness */
