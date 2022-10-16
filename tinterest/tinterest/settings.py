@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tinterest.wsgi.application'
+WSGI_APPLICATION = 'tinterest2.wsgi.application'
 
 
 # Database
@@ -137,5 +137,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_PASSWORD_VALIDATORS = []
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_STORAGE_BUCKET_NAME = 'catcollector-tatyana-1984'
+AWS_STORAGE_BUCKET_NAME = 'tinterest'
 AWS_QUERYSTRING_AUTH = False
+
+# Configure Django App for Heroku.
+import django_on_heroku
+django_on_heroku.settings(locals())
