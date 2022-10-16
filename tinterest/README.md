@@ -1,6 +1,6 @@
 # Tinterest
 
-#Tin Interest
+# Tin Interest
 
 ## Introduction
 
