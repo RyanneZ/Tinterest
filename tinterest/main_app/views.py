@@ -36,7 +36,6 @@ def signup(request):
  
 # Define the home view
 def home(request):
-  print(request.user)
   return render(request, 'home.html')
 
 #Oauth sign-up 
@@ -178,7 +177,7 @@ def comments_delete(request, comment_id, post_id):
 def search_posts(request):
   if request.method == 'POST':
     searched = request.POST['searched']
-    posts = Postcreated.objects.filter(title__contains=searched,tags__contains=searched)
+    posts = Postcreated.objects.filter(title__contains=searched)
     return render(request, 'search.html', {'searched': searched, 'posts': posts})
   else:
     return render(request, 'search.html')
