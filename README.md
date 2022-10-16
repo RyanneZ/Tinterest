@@ -1,4 +1,4 @@
-# Tinterest!
+# Tinterest
 
 ## Introduction
 
