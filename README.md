@@ -4,24 +4,18 @@
 
 Tinterest is an image sharing and social media service designed to enable saving and discovery of information (specifically "ideas") on the internet using images. As a user, you can make posts on the community board and share your posts with other users. You can also save the posts that you like.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 <img width="198" alt="image" src="https://user-images.githubusercontent.com/91228440/178105717-263e4ea2-f85f-409a-a486-faff5da0687c.png">
 
-☐ App Title: Contains a description of what the app does and optional background info.
-=======
->>>>>>> search
+
 ### Landing page:
 <img width="198" alt="image" src="https://user-images.githubusercontent.com/91228440/178105717-263e4ea2-f85f-409a-a486-faff5da0687c.png">
-=======
+
 ### Landing Page
 <img width="301" alt="image" src="https://user-images.githubusercontent.com/91228440/178107347-5703abf2-7970-44e7-8f20-8492a7c73488.png">
 
 ### Signup
 <img width="300" alt="image" src="https://user-images.githubusercontent.com/91228440/178107417-a5a84000-0613-4271-ad10-0a125df39f37.png">
->>>>>>> 1747816b55a37bd4b81b717f8e3c94c1de3dd559
+
 
 ### Profile 
 <table>
@@ -41,12 +35,6 @@ Tinterest is an image sharing and social media service designed to enable saving
   </tr>
 </table>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> master
->>>>>>> search
-=======
  ### Edit the Post and Make a Comment
  <table>
   <tr>
@@ -64,7 +52,7 @@ Tinterest is an image sharing and social media service designed to enable saving
     <td><img width="300" alt="image" src="https://user-images.githubusercontent.com/91228440/178108295-0b49c42a-f030-421d-b868-6a4d6fedac84.png"></td>
   </tr>
 </table>
->>>>>>> 1747816b55a37bd4b81b717f8e3c94c1de3dd559
+
 
 ### Search Bar
  <table>
