@@ -1,5 +1,7 @@
 # Tinterest
 
+#Tin Interest
+
 ## Introduction
 
 Tinterest is an image sharing and social media service designed to enable saving and discovery of information (specifically "ideas") on the internet using images. As a user, you can make posts on the community board and share your posts with other users. You can also save the posts that you like.
