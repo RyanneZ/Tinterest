@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h6 class="page-title center-align">Upload Photo</h6>
+
+<form method="POST" action="/posts_submit/" enctype="multipart/form-data">
+    {% csrf_token %}
+    Image: <input name="image" type="file">
+    <br>
+    Title: <input name="title">
+    Description: <input name="description">
+    Tags: <input name="tags">
+    <button class="small-btn inactive left">
+        <a href="{% url 'profile' %}" >Back</a>
+      </button>
+    <button class="small-btn pink" type="submit">Add</button>
+</form>
+{% endblock %}

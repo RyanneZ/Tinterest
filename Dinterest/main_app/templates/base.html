@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">
+
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+ 
+  <title>Dinterest</title>
+</head>
+<body>
+  <nav class="nav-wraper white">
+    <div class="container">
+      <a href="/" class="brand-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
+      <a href="#" class="sidenav-trigger right pink-text" data-target="mobile-links">
+        <i class="material-icons ">menu</i>
+      </a>
+      <ul class="right hide-on-med-and-down">      
+        {% if user.is_authenticated %} 
+        <li><a href="{% url 'index' %}" class="pink-text">Home</a></li>
+        <li><a href="{% url 'profile' %}" class="pink-text"> Profile</a></li>
+        <li><a href="{% url 'index' %}" class="pink-text">Posts</a></li>
+        <li><a href="#"class="pink-text">Search</a></li>
+        <li><a href="{% url 'logout' %}"class="pink-text">Log Out</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" class="pink-text">Log In</a></li>
+        <li><a href="{% url 'signup' %}" class="pink-text">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  
+  <ul class="sidenav pink padded" id="mobile-links">
+    {% if user.is_authenticated %} 
+    
+    <li ><a href="{% url 'index' %}" class="white-text"><i class="material-icons white-text">home</i>Home</a></li>
+    <li><a href="{% url 'profile' %}" class="white-text"><i class="material-icons white-text">account_circle</i>Profile</a></li>
+    <li><a href="{% url 'index' %}" class="white-text"><i class="material-icons white-text">favorite_border</i>Posts</a></li>
+    <li><a href="#" class="white-text"><i class="material-icons white-text">search</i>Search</a></li>
+    <li><a href="{% url 'logout' %}" class="white-text"><i class="material-icons white-text">logout</i>Log Out</a></li>
+    {% else %}
+    <li><a href="{% url 'login' %}" class="white-text"><i class="material-icons white-text">login</i>Log In</a></li>
+    <li><a href="{% url 'signup' %}" class="white-text"><i class="material-icons white-text">signup</i>Sign Up</a></li>
+    {% endif %}
+  </ul>
+  
+  
+  <main class="container content">
+    {% block content %}
+    {% endblock %}
+  </main>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      $('.sidenav').sidenav()
+      $('select').formSelect();
+      $('select').material_select();
+      $('datepicker').pickadate()
+      $('timepicker').pickatime()
+    })
+    $(document).ready(function(){
+    $('.tabs').tabs();
+  });
+  
+  </script>
+  
+</body>
+</html>

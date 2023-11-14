@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  {% if searched %}
+    <h5>You searched for {{ searched }}</h5>
+    <br>
+    
+    <div class="post-container">
+      {% for post in posts %}
+        <div class="post-item">
+          <a href="{% url 'detail' post.id %}">
+            <img id= "post-img" class='cover'src="{{ post.image.url }}">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <h5>Please search</h5>
+  {% endif %}
+
+
+
+  
+
+
+
+{% endblock %}

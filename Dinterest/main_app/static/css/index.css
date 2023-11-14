@@ -1,0 +1,76 @@
+/* masonry grid for photos */
+.post-container {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+    
+  -webkit-column-gap: 15px;
+  -moz-column-gap: 15px;
+  column-gap: 15px;
+}
+
+.post-item {
+  display: inline-block;
+  width: 100%;
+}
+
+#post-img {
+  border-radius: 20px;
+}
+.post-item img {
+  display:block;
+  width: 100%;
+}
+
+/* search bar on home/index page */
+#home-search {
+  border-radius: 20px;
+  background-color: #F3EEEF;
+  border-bottom: none;
+  padding: 0 100px;
+  padding-left: 16px;
+  width: 100%;
+  margin-right: 18px;
+}
+#home-search-icon {
+  /* margin-left: 53px; */
+  margin-bottom: 1px;
+  
+}
+#home-search-button {
+  border: none;
+  background-color: white;
+}
+#search-add-post-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* responsiveness */
+
+@media screen and (min-width: 768px) {
+  #home-search-icon {
+    margin-left: 16px
+  }
+  #search-add-post-home {
+    width: 98%;
+  }
+}
+/* .post-container {
+  display: grid;
+  grid-template-columns:  repeat(auto-fit, minmax(100px,1fr));
+  grid-auto-rows: 100px;
+  grid-auto-flow: dense;
+  grid-gap: 8px;
+} */
+/* post-item:nth-child(3) {
+  grid-row: span 1;
+}
+post-item:nth-child(2) {
+  grid-row: span 6;
+}
+post-item:nth-child(5) {
+  grid-row: span 4;
+} */

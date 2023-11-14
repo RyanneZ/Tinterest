@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Source+Sans+Pro:wght@400;700&display=swap"
+      rel="stylesheet"/>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}" />
+    <title>Dinterest Login</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="navbar">
+        <a href="{% url 'welcome' %}"><img src="{% static 'img/back-icon.png' %}" alt=""></a>
+        <h3>Log In</h3>
+      </div>
+    </section>
+    <main class="container">
+      <div class="wrapper wrap-signup">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-pink lowered" value="login">
+            
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

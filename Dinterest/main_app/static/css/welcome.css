@@ -1,0 +1,59 @@
+/* general */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ol, ul, menu {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: #212121;
+}
+
+h1,h2,h3,h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight:700;
+}
+
+/* welcome screen styles */
+/* container comes from materialize, added here for pages
+that don't have it */
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+.header {
+  font-size: 2.5rem;
+}
+.wrapper {
+  margin-top: 16rem;
+}
+.wrap-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.logoImg-wrap {
+  width: 40%;
+}
+
+/* responsiveness */
+@media screen and (min-width: 768px) {
+  .logoImg-wrap {
+    width: 20%;
+  }
+  
+}

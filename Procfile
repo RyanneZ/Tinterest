@@ -1,1 +1,1 @@
-web: gunicorn tinterest.wsgi
+web: gunicorn tinterest02.wsgi

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+  <div class="card-content">
+    <img id="post-img" class='cover'src="{{ post.image.url }}">
+    <div class="profile-link">
+      <div class="profile-link-img">
+          <img class="profile-img"  src="{{ post.user.profile.image.url }}">
+
+      </div>
+      <a href="{% url 'show_public_profile' post.user.id %}"><h6>{{ post.user }}</h6></a>
+    </div>
+    <h2>{{ post.title }}</h2>
+    <br>
+    <!-- <h4>{{user.name}}</h4> -->
+    <p>{{ post.description }}</p>
+    <p class="tag">{{ post.tags }}</p>
+   
+  </div>
+</div>
+
+<div class="btn-container right">
+  <button class="small-btn inactive">
+    <a href="{% url 'posts_delete' post.id %}" >Delete</a>
+  </button>
+  <button class="small-btn pink">
+    <a href="{% url 'edit_post' post.id %}">Edit</a>
+  </button>
+</div>
+<button class="small-btn inactive left back">
+  <a href="{% url 'index' %}" >Back</a>
+</button>
+<section class="comment-submission">
+  <!-- <h4>Comments:</h4> -->
+  <form method="POST" action="{% url 'comments_create' post.id %}">
+    {% csrf_token %}
+    <label for="comment">Comment:</label><br>
+    <input type="text" name="content"></input>
+    <button class= "small-btn pink" type="submit">Submit</button>
+   </form>
+</section>
+
+ <div class="user-comment-group">
+  {% for comment in comments %}
+    {% if comment.user.id == request.user.id %} 
+    <div class="user-comment-id">
+      <a href="{% url 'show_public_profile' comment.user.id %}"><h6>{{ comment.user}}</h6></a>
+      <p>{{comment.content}}</p>
+    </div>
+    <form method="POST" action="{% url 'comments_delete' post.id comment.id %}">
+      {% csrf_token %}
+      <button  id="comment-delete-btn" type="submit"><i class="material-icons">delete</i></button>
+     </form>
+    {% else %}
+    <div class="user-comment-id">
+      <a href="{% url 'show_public_profile' comment.user.id %}"><h6>{{ comment.user}}</h6></a>
+      <p>{{comment.content}}</p>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+<!-- {% if comment.user.id == request.user.id %} 
+{% else %}
+{% endif %} -->
+
+
+
+
+{% endblock %}

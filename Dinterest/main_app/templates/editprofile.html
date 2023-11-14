@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h6 class="page-title center-align">Edit Profile</h6>
+    
+   
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="small-btn inactive left">
+            <a href="{% url 'profile' %}" >Back</a>
+          </button>
+        <button class="small-btn pink" type="submit">Update</button>
+    </form>
+
+
+ 
+ 
+{% endblock %}
